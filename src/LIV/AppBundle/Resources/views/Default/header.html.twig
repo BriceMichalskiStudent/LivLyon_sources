@@ -1,0 +1,89 @@
+
+<!-- NAVIGATION -->
+<!-- LAPTOP -->
+
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="{{ path("liv_app_homepage") }}" class="brand-logo"><img src="{{ asset('img/logo.png') }}"></a>
+            <!-- large screen -->
+            <ul class="right hide-on-med-and-down">
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown-places">Bonnes adresses<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a href="#"></a></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown-events">Evenements<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a href="#">Fanzine</a></li>
+                <li><a href="#">Shop</a></li>
+                <li>
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+            <!-- Burger bouton for mobile nav-->
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+    <!--  places categories dropdown -->
+    <ul id="dropdown-places" class="dropdown-content">
+        <li><a href="#!">Café</a></li>
+        <li><a href="#!">Bar</a></li>
+        <li><a href="#!">Restaurant</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Top 10</a></li>
+    </ul>
+
+    <!--  events categories dropdown -->
+    <ul id="dropdown-events" class="dropdown-content">
+        <li><a href="#!">Soirée</a></li>
+        <li><a href="#!">Concert</a></li>
+        <li><a href="#!">Culturel</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Top 10</a></li>
+    </ul>
+</div>
+
+
+<!-- MOBILE -->
+
+<ul id="nav-mobile" class="sidenav collapsible">
+    <li>
+        <form>
+            <div class="input-field">
+                <input id="search" type="search" placeholder="Que cherchez vous ?" required>
+                <label class="label-icon" for="search"></label>
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+    </li>
+    <li>
+        <div class="collapsible-header">Bonnes adresses<i class="material-icons">arrow_drop_down</i></div>
+        <div class="collapsible-body">
+            <ul>
+                <li><a href="#!">Café</a></li>
+                <li><a href="#!">Bar</a></li>
+                <li><a href="#!">Restaurant</a></li>
+                <li class="divider"></li>
+
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header">Evénements<i class="material-icons">arrow_drop_down</i></div>
+        <div class="collapsible-body">
+            <ul>
+                <li><a href="#!">Soirée</a></li>
+                <li><a href="#!">Concert</a></li>
+                <li><a href="#!">Culturel</a></li>
+                <li class="divider"></li>
+            </ul>
+        </div>
+    </li><li><a href="#">Fanzine</a></li>
+    <li><a href="#">Shop</a></li>
+</ul>
+
+<!-- NAVIGATION END -->
