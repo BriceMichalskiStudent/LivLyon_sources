@@ -1,0 +1,4 @@
+services:
+#    liv_app.example:
+#        class: LIV\AppBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

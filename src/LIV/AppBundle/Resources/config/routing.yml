@@ -1,0 +1,3 @@
+liv_app_homepage:
+    path:     /
+    defaults: { _controller: LIVAppBundle:Default:index }
