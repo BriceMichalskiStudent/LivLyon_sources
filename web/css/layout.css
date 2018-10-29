@@ -8,3 +8,10 @@
 .parallax1-title{
     color: white;
 }
+.page-footer{
+    background-color: #064191;
+}
+#mapid {
+    height: 480px;
+    margin-bottom: 2em;
+}
