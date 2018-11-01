@@ -17,7 +17,7 @@ echo " "
 echo " => run MESS DETECTOR"
 echo " "
 
-vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming
+vendor/bin/phpmd src/ text custom-phpmd-ruleset
 
 echo "-----------------------------------------------------"
 echo " "

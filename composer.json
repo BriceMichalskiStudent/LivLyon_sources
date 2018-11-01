@@ -28,6 +28,7 @@
         "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "friendsofphp/php-cs-fixer": "^2.13",
         "phpmd/phpmd": "^2.6",
         "phpunit/phpunit": "^6.5",
