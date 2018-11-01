@@ -431,8 +431,8 @@ class Place
     /**
      * @ORM\PreUpdate
      */
-    public function setUpdatedAtValue(){
+    public function setUpdatedAtValue()
+    {
         $this->updatedAt = new \DateTime("now");
     }
 }
-
