@@ -1,0 +1,20 @@
+
+show_place:
+  path:    /places/{id}
+  defaults : { _controller: LIVAppBundle:Place:show }
+  methods: [GET]
+  requirements:
+    id: '\d+'
+
+show_places:
+  path: /places/last/{limit}
+  defaults: { _controller: LIVAppBundle:Place:list }
+  methods: [GET]
+  requirements:
+    limit: '\d+'
+
+create_place:
+  path: /places
+  defaults : { _controller: LIVAppBundle:Place:create }
+  methods: [POST]
+
