@@ -30,6 +30,7 @@
         "friendsofphp/php-cs-fixer": "^2.13",
         "phpmd/phpmd": "^2.6",
         "phpunit/phpunit": "^6.5",
+        "sebastian/phpcpd": "^3",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
     },

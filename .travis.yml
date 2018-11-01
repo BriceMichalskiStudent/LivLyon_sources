@@ -20,3 +20,4 @@ script:
   - vendor/phpunit/phpunit/phpunit --configuration $TEST_CONFIG
   - vendor/bin/php-cs-fixer fix -v --diff --dry-run src/
   - vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming
+  - vendor/bin/phpcpd src/
