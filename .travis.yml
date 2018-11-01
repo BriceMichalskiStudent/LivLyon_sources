@@ -19,12 +19,14 @@ before_script:
   - composer self-update
   - composer install --no-interaction --prefer-source
   - php bin/console doctrine:database:create --env=test
+  - php bin/console doctrine:schema:drop --env=test --force
   - php bin/console doctrine:schema:create --env=test
+  - php bin/console doctrine:fixtures:load -n
 
 script:
   - vendor/phpunit/phpunit/phpunit --configuration $TEST_CONFIG
   - vendor/bin/php-cs-fixer fix -v --diff --dry-run src/
-  - vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming
+  - vendor/bin/phpmd src/ text custom-phpmd-ruleset
   - vendor/bin/phpcpd src/
 
 notifications:

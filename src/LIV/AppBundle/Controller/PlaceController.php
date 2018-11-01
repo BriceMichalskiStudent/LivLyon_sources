@@ -9,8 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PlaceController extends Controller
 {
-    public function showAction(Place $place)
+    public function showAction($id)
     {
+        $place = $this->getDoctrine()->getRepository('LIV\AppBundle\Entity\Place')->find($id);
         $data = $this->get('jms_serializer')->serialize($place, 'json');
 
         $response = new Response($data);
