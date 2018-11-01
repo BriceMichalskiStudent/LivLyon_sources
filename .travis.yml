@@ -17,8 +17,6 @@ before_script:
   - composer install --no-interaction --prefer-source
 
 script:
-  - then vendor/phpunit/phpunit/phpunit --configuration $TEST_CONFIG
+  - vendor/phpunit/phpunit/phpunit --configuration $TEST_CONFIG
   - vendor/bin/php-cs-fixer fix -v --diff --dry-run src/
-  - vendor/bin/phpmd src/ text codesize,unusedcode,naming
-
-install: travis_retry composer install --no-interaction --prefer-source
+  - vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming
