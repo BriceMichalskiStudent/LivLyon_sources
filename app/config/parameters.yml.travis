@@ -1,0 +1,12 @@
+# This file is using only on travis-ci
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: test
+    database_user: root
+    database_password: ~
+    mailer_transport: gmail
+    mailer_host: 127.0.0.1
+    mailer_user: mailer.dev.brice@gmail.com
+    mailer_password: bar
+    secret: MySecretVerySecret
