@@ -1,11 +1,13 @@
 language: php
 
-
 matrix:
   include:
     - php : 7.0
     - php : 7.1
   fast_finish: true
+
+services:
+  - mysql
 
 env:
   global:
@@ -13,11 +15,18 @@ env:
 
 before_script:
   - travis_retry
+  - cp app/config/parameters.yml.travis app/config/parameters.yml
   - composer self-update
   - composer install --no-interaction --prefer-source
+  - php bin/console doctrine:database:create --env=test
+  - php bin/console doctrine:schema:create --env=test
 
 script:
   - vendor/phpunit/phpunit/phpunit --configuration $TEST_CONFIG
   - vendor/bin/php-cs-fixer fix -v --diff --dry-run src/
   - vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming
   - vendor/bin/phpcpd src/
+
+notifications:
+  email:
+    -  mailer.dev.brice@gmail.com
