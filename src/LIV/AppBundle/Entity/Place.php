@@ -112,7 +112,7 @@ class Place
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
-
+  
     /**
      * Get id
      *
