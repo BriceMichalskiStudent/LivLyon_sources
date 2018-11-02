@@ -112,14 +112,7 @@ class Place
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
-
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="places")
-     * @ORM\JoinTable(name="place_tag")
-     */
-    private $tags;
-
+    
     /**
      * Get id
      *
