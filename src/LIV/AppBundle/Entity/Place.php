@@ -51,32 +51,10 @@ class Place
     private $fullDescription;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="LIV\AppBundle\Entity\Address", cascade={"persist","persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $city;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="zipCode", type="string", length=5)
-     */
-    private $zipCode;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="street", type="string", length=255)
-     */
-    private $street;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="streetNumber", type="string", length=255)
-     */
-    private $streetNumber;
+    private $address;
 
     /**
      * @var float
@@ -112,7 +90,23 @@ class Place
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
-  
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="places",cascade={"persist"})
+     * @ORM\JoinTable(name="place_tag")
+     */
+    private $tags;
+
+    /**
+     *@ORM\OneToMany(targetEntity="Event", mappedBy="place")
+     */
+    private $events;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="PlaceCategory", mappedBy="places")
+     */
+    private $categories;
+
     /**
      * Get id
      *
@@ -217,102 +211,6 @@ class Place
     public function getFullDescription()
     {
         return $this->fullDescription;
-    }
-
-    /**
-     * Set city
-     *
-     * @param string $city
-     *
-     * @return Place
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set zipCode
-     *
-     * @param string $zipCode
-     *
-     * @return Place
-     */
-    public function setZipCode($zipCode)
-    {
-        $this->zipCode = $zipCode;
-
-        return $this;
-    }
-
-    /**
-     * Get zipCode
-     *
-     * @return string
-     */
-    public function getZipCode()
-    {
-        return $this->zipCode;
-    }
-
-    /**
-     * Set street
-     *
-     * @param string $street
-     *
-     * @return Place
-     */
-    public function setStreet($street)
-    {
-        $this->street = $street;
-
-        return $this;
-    }
-
-    /**
-     * Get street
-     *
-     * @return string
-     */
-    public function getStreet()
-    {
-        return $this->street;
-    }
-
-    /**
-     * Set streetNumber
-     *
-     * @param string $streetNumber
-     *
-     * @return Place
-     */
-    public function setStreetNumber($streetNumber)
-    {
-        $this->streetNumber = $streetNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get streetNumber
-     *
-     * @return string
-     */
-    public function getStreetNumber()
-    {
-        return $this->streetNumber;
     }
 
     /**
@@ -434,5 +332,138 @@ class Place
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTime("now");
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \LIV\AppBundle\Entity\Tag $tag
+     *
+     * @return Place
+     */
+    public function addTag(\LIV\AppBundle\Entity\Tag $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \LIV\AppBundle\Entity\Tag $tag
+     */
+    public function removeTag(\LIV\AppBundle\Entity\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Set address
+     *
+     * @param \LIV\AppBundle\Entity\Address $address
+     *
+     * @return Place
+     */
+    public function setAddress(\LIV\AppBundle\Entity\Address $address = null)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return \LIV\AppBundle\Entity\Address
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Add event
+     *
+     * @param \LIV\AppBundle\Entity\Event $event
+     *
+     * @return Place
+     */
+    public function addEvent(\LIV\AppBundle\Entity\Event $event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \LIV\AppBundle\Entity\Event $event
+     */
+    public function removeEvent(\LIV\AppBundle\Entity\Event $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * Add category
+     *
+     * @param \LIV\AppBundle\Entity\PlaceCategory $category
+     *
+     * @return Place
+     */
+    public function addCategory(\LIV\AppBundle\Entity\PlaceCategory $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \LIV\AppBundle\Entity\PlaceCategory $category
+     */
+    public function removeCategory(\LIV\AppBundle\Entity\PlaceCategory $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

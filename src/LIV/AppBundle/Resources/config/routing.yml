@@ -2,6 +2,9 @@ liv_app_homepage:
     path:     /
     defaults: { _controller: LIVAppBundle:Default:index }
 
-crud_place:
+liv_place:
     resource: "@LIVAppBundle/Resources/config/routing-place.yml"
-    prefix:   /places
+
+liv_place_category:
+    resource: "@LIVAppBundle/Resources/config/routing-place-category.yml"
+

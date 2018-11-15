@@ -1,0 +1,7 @@
+<ul id="dropdown-places" class="dropdown-content">
+    {% for category in placeCategories %}
+        <li><a href="{{ path('show_places_by_category',{'slug': category.slug }) }}">{{ category.name }}</a></li>
+    {% endfor %}
+    <li class="divider"></li>
+    <li><a href="#!">Top 10</a></li>
+</ul>
