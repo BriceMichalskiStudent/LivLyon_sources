@@ -1,1 +1,144 @@
-Hello World!
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"  media="screen,projection"/>
+
+    <!--Import layout.css-->
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/layout.css') }}"  media="screen,projection"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR -->
+<!-- MOBILE & LAPTOP -->
+    {% include '@LIVApp/Default/header.html.twig' %}
+
+<!-- FIRST PARALLAX-->
+<div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+        <div class="container">
+            <br><br>
+            <h1 id="parallax1-title" class="header center white-text text-lighten-2">Welcome to Lyon</h1>
+            <div class="row center">
+                <h5 class="header white-text col s12 light"></h5>
+            </div>
+            <div class="row center">
+                <a href="#" id="download-button" class="btn-large waves-effect waves-light blue darken-4 lighten-1">Que faire ?</a>
+            </div>
+            <br><br>
+        </div>
+    </div>
+    <div class="parallax"><img src="{{ asset('img/background1.jpg') }}" alt="Unsplashed background img 1"></div>
+</div>
+
+
+<!-- PRESENTATION TEXT -->
+
+<div class="container">
+    <div class="section">
+
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+                    <h5 class="center">Blabla sur la magnifique ville de lyon</h5>
+
+                    <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                    <h5 class="center">Blabla sur le but de notre tavail acharnée</h5>
+
+                    <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+                    <h5 class="center">Blabla sur ce qu'on veux</h5>
+
+                    <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- RECOMMANDATION -->
+<div class="parallax-container">
+    <div class="section no-pad-bot">
+        <div class="container center">
+            <br><br>
+            <h1 id="parallax1-title" class="header center white-text text-lighten-2">On recommande</h1>
+            <div class="row center">
+                <h5 class="header white-text col s12 light center"></h5>
+            </div>
+            <div class="row center">
+                <a href="" id="download-button" class="btn-large waves-effect waves-light blue darken-4 lighten-1">Je découvre</a>
+            </div>
+        </div>
+    </div>
+    <div class="parallax"><img src="{{ asset('img/background2.jpg') }}" alt="Unsplashed background img 2"></div>
+</div>
+
+
+<!-- RECOMMANDATION DESCRIPTION-->
+<div class="container">
+    <div class="section">
+
+        <div class="row">
+            <div class="col s12 center">
+                <h3><i class="mdi-content-send brown-text"></i></h3>
+                <h4>Le restaurant blablabla vous propose ... </h4>
+                <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- map -->
+<div class="container" id="mapid">
+
+</div>
+<br>
+<!-- Carroussel -->
+
+    <div class="carousel carousel-slider center">
+        <img src="/img/carousel-1.jpg" class="carousel-item">
+        <img src="/img/carousel-2.jpg" class="carousel-item">
+        <img src="/img/carousel-3.jpg" class="carousel-item">
+        <img src="/img/carousel-4.jpg" class="carousel-item">
+        <img src="/img/carousel-5.jpg" class="carousel-item">
+    </div>
+
+{% include '@LIVApp/Default/footer.html.twig' %}
+
+
+
+
+<!--JavaScript at end of body for optimized loading-->
+<!-- jquery + materialize + own script -->
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/init.js') }}"></script>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+<script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
+</body>
+</html>
