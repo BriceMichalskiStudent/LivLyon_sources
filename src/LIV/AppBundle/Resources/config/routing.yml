@@ -4,4 +4,4 @@ liv_app_homepage:
 
 crud_place:
     resource: "@LIVAppBundle/Resources/config/routing-place.yml"
-    prefix:   /
+    prefix:   /places

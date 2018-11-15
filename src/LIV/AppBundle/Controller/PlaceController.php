@@ -9,37 +9,5 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PlaceController extends Controller
 {
-    public function showAction($id)
-    {
-        $place = $this->getDoctrine()->getRepository('LIV\AppBundle\Entity\Place')->find($id);
-        $data = $this->get('jms_serializer')->serialize($place, 'json');
 
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-    }
-
-    public function createAction(Request $request)
-    {
-        $data = $request->getContent();
-        $place = $this->get('jms_serializer')->deserialize($data, 'LIV\AppBundle\Entity\Place', 'json');
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($place);
-        $em->flush();
-
-        return new Response('', Response::HTTP_CREATED);
-    }
-
-    public function listAction($limit)
-    {
-        $places = $this->getDoctrine()->getManager()->getRepository("LIVAppBundle:Place")->findBy(array(), array("updatedAt"=>"desc"), $limit, null);
-        $data = $this->get('jms_serializer')->serialize($places, 'json');
-
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-    }
 }
