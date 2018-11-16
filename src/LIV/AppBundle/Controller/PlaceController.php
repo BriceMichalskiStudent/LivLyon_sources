@@ -9,10 +9,10 @@ class PlaceController extends Controller
     public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $category = $em->getRepository('LIVAppBundle:Place')->findOneBySlug($slug);
+        $place = $em->getRepository('LIVAppBundle:Place')->findOneFullBySlug($slug);
 
         return $this->render('@LIVApp/Categories/placesCategory.html.twig', array(
-            "category" => $category
+            "place" => $place
         ));
     }
 }

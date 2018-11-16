@@ -476,5 +476,4 @@ class Place
     {
         return $this->categories;
     }
-
 }
