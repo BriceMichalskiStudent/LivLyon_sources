@@ -1,4 +1,4 @@
-<ul id="dropdown-places" class="dropdown-content">
+<ul id="dropdown-events" class="dropdown-content">
     {% for category in eventCategories %}
         <li><a href="{{ path('show_events_by_category',{'slug': category.slug }) }}">{{ category.name }}</a></li>
     {% endfor %}
