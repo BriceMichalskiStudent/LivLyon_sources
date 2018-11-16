@@ -38,13 +38,8 @@
     </ul>
 
     <!--  events categories dropdown -->
-    <ul id="dropdown-events" class="dropdown-content">
-        <li><a href="#!">Soirée</a></li>
-        <li><a href="#!">Concert</a></li>
-        <li><a href="#!">Culturel</a></li>
-        <li class="divider"></li>
-        <li><a href="#!">Top 10</a></li>
-    </ul>
+    {{ render(controller('LIV\\AppBundle\\Controller\\DefaultController::getEventsCategories')) }}
+
 </div>
 
 

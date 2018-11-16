@@ -17,6 +17,7 @@ class DefaultController extends Controller
 
         return $this->render('@LIVApp/Default/places-categories-dropdown.html.twig', array(
             "placeCategories" => $placeCategories
+        ));
     }
 
     public function getEventsCategories()

@@ -8,3 +8,6 @@ liv_place:
 liv_place_category:
     resource: "@LIVAppBundle/Resources/config/routing-place-category.yml"
 
+liv_event_category:
+    resource: "@LIVAppBundle/Resources/config/routing-event-category.yml"
+
