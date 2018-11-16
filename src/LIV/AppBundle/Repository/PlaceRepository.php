@@ -10,4 +10,8 @@ namespace LIV\AppBundle\Repository;
  */
 class PlaceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findOneBySlug($slug)
+    {
+
+    }
 }

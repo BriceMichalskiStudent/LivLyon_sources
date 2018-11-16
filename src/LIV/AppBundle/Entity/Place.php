@@ -30,6 +30,14 @@ class Place
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+
+    /**
      * @var int
      *
      * @ORM\Column(name="rating", type="smallint", nullable=true)
@@ -103,7 +111,8 @@ class Place
     private $events;
 
     /**
-     * @ORM\ManyToMany(targetEntity="PlaceCategory", mappedBy="places")
+     * @ORM\ManyToMany(targetEntity="PlaceCategory", inversedBy="places")
+     * @ORM\JoinTable(name="mapping_places_categories")
      */
     private $categories;
 
@@ -320,10 +329,11 @@ class Place
     /**
      * @ORM\PrePersist
      */
-    public function setCreatedAtValue()
+    public function prepersistFunction()
     {
         $this->createdAt = new \DateTime("now");
         $this->setUpdatedAtValue();
+        $this->slug = str_replace(' ', '-', $this->name);
     }
 
     /**
@@ -466,4 +476,5 @@ class Place
     {
         return $this->categories;
     }
+
 }

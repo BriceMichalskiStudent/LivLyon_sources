@@ -11,11 +11,12 @@ class DefaultController extends Controller
         return $this->render('@LIVApp/Default/index.html.twig');
     }
 
-    public function getPlacesCategories(){
+    public function getPlacesCategories()
+    {
         $em = $this->getDoctrine()->getManager();
         $placeCategories = $em->getRepository('LIVAppBundle:PlaceCategory')->findAll();
 
-        return $this->render('@LIVApp/Default/places-categories-dropdown.html.twig',array(
+        return $this->render('@LIVApp/Default/places-categories-dropdown.html.twig', array(
             "placeCategories" => $placeCategories
         ));
     }

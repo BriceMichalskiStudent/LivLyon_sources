@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PlaceCategory
  *
- * @ORM\Table(name="place_category")
+ * @ORM\Table(name="category_places")
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\PlaceCategoryRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -37,8 +37,7 @@ class PlaceCategory
     private $slug;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Place", inversedBy="categories")
-     * @ORM\JoinTable(name="places_categorie")
+     * @ORM\ManyToMany(targetEntity="Place", mappedBy="categories")
      */
     private $places;
 
@@ -145,8 +144,8 @@ class PlaceCategory
     /**
      * @ORM\PrePersist
      */
-    public function setSlughable(){
-        $this->slug = str_replace(' ','-',$this->name);
+    public function setSlugable()
+    {
+        $this->slug = str_replace(' ', '-', $this->name);
     }
-
 }

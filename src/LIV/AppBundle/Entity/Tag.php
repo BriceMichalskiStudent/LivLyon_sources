@@ -107,5 +107,4 @@ class Tag
     {
         return $this->places;
     }
-
 }

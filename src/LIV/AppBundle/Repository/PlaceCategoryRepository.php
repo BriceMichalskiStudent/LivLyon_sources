@@ -10,18 +10,19 @@ namespace LIV\AppBundle\Repository;
  */
 class PlaceCategoryRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findAllPlaceByCategorySlug($slug){
+    public function findAllPlaceByCategorySlug($slug)
+    {
         $qb = $this->createQueryBuilder('pc')
             ->where('pc.slug = :slug')
-            ->setParameter('slug',$slug)
-            ->leftJoin('pc.places','plcs')
+            ->setParameter('slug', $slug)
+            ->leftJoin('pc.places', 'plcs')
             ->addSelect('plcs')
-            ->leftJoin('plcs.address','ddrss')
+            ->leftJoin('plcs.address', 'ddrss')
             ->addSelect('ddrss')
-            ->leftJoin('plcs.tags','tgs')
+            ->leftJoin('plcs.tags', 'tgs')
             ->addSelect('tgs')
         ;
 
-        return $qb->getQuery()->getResult();
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }
