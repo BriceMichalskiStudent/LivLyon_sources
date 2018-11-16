@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="event_category")
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\EventCategoryRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class EventCategory
 {
@@ -85,21 +86,13 @@ class EventCategory
     }
 
     /**
-     * Set slug
-     *
-     * @return EventCategory
-     */
-
-    publiv function setSlug
-
-    /**
      * Get slug
      *
      * @return string
      */
     public function getSlug()
     {
-        return $this->slug = ;
+        return $this->slug;
     }
 
     /**
