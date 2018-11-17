@@ -1,0 +1,14 @@
+#short_description{
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+
+    font-size: 1em;
+    margin-bottom: 2em;
+}
+
+#address{
+    border-bottom: 1px solid lightslategrey;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}

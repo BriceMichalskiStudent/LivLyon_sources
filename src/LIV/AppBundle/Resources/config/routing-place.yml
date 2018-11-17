@@ -1,1 +1,4 @@
-
+show_single_places:
+  path:    /places/{slugCategory}/{slugPlace}
+  defaults : { _controller: LIVAppBundle:Place:show }
+  methods: [GET]

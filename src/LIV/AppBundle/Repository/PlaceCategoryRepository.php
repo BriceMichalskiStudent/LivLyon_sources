@@ -12,7 +12,7 @@ class PlaceCategoryRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findAllPlaceByCategorySlug($slug)
     {
-        $qb = $this->createQueryBuilder('pc')
+        $queryBuilder = $this->createQueryBuilder('pc')
             ->where('pc.slug = :slug')
             ->setParameter('slug', $slug)
             ->leftJoin('pc.places', 'plcs')
@@ -23,6 +23,6 @@ class PlaceCategoryRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('tgs')
         ;
 
-        return $qb->getQuery()->getOneOrNullResult();
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 }

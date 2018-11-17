@@ -10,7 +10,15 @@ namespace LIV\AppBundle\Repository;
  */
 class PlaceRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findOneBySlug($slug)
+    public function findOneFullBySlug($slug)
     {
+        $queryBuilder = $this->createQueryBuilder('plcs')
+            ->where("plcs.slug = :slug")
+            ->setParameter('slug', $slug)
+            ->leftJoin('plcs.address', 'ddrss')
+            ->addSelect('ddrss')
+        ;
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 }

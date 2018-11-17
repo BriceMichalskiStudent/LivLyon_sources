@@ -11,7 +11,6 @@ class PlaceCategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $category= $em->getRepository('LIVAppBundle:PlaceCategory')->findAllPlaceByCategorySlug($slug);
 
-
         return $this->render('@LIVApp/Categories/placesCategory.html.twig', array(
             "category" => $category
         ));

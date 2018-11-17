@@ -1,4 +1,4 @@
 show_places_by_category:
-  path:    /{slug}
+  path:    /places/{slug}
   defaults : { _controller: LIVAppBundle:PlaceCategory:show }
   methods: [GET]
