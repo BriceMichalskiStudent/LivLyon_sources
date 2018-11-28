@@ -1,0 +1,28 @@
+{% extends '@LIVApp/Default/layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row eventsPresentation">
+            <div class="col s12 m12">
+                {% for event in category.events %}
+                    <div class="col s6 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="{{ asset('img/background2.jpg') }}">
+                                <span class="card-title">{{ event.name }}</span>
+                            </div>
+                            <div class="card-content">
+                                <p>
+                                    {{ event.shortDescription }}
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{ path('show_single_events',{'slugEvent': event.slug, 'slugCategory':category.slug }) }}">Je decouvre</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

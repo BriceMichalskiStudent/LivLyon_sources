@@ -10,4 +10,14 @@ namespace LIV\AppBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findOneFullBySlug($slug)
+    {
+        $queryBuilder = $this->createQueryBuilder('evt')
+            ->where("evt.slug = :slug")
+            ->setParameter('slug', $slug)
+            ->leftJoin('evt.address', 'ddrss')
+            ->addSelect('ddrss')
+        ;
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
 }

@@ -2,13 +2,17 @@
 
 namespace LIV\AppBundle\Entity;
 
+use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Category;
 
 /**
  * Event
  *
  * @ORM\Table(name="event")
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\EventRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Event
 {
@@ -29,14 +33,14 @@ class Event
     private $name;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="startingDate", type="datetime", nullable=true)
      */
     private $startingDate;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="endingDate", type="datetime", nullable=true)
      */
@@ -62,6 +66,12 @@ class Event
      * @ORM\Column(name="link", type="string", length=255, nullable=true)
      */
     private $link;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="EventCategory", inversedBy="events")
+     * @ORM\JoinTable(name="mapping_events_categories")
+     */
+    private $categories;
 
 
     /**
@@ -217,5 +227,60 @@ class Event
     {
         return $this->link;
     }
-}
 
+    /**
+     * Add category
+     *
+     * @param \LIV\AppBundle\Entity\EventCategory $category
+     *
+     * @return Event
+     */
+    public function addCategory(\LIV\AppBundle\Entity\EventCategory $category)
+    {
+        $this->categories[] = $category;
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \LIV\AppBundle\Entity\EventCategory $category
+     */
+    public function removeCategory(\LIV\AppBundle\Entity\EventCategory $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Event
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+}

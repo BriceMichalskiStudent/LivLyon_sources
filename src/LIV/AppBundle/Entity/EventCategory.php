@@ -36,6 +36,11 @@ class EventCategory
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Event", mappedBy="categories")
+     */
+    private $events;
+
 
     /**
      * Get id
@@ -45,6 +50,14 @@ class EventCategory
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

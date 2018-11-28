@@ -1,8 +1,10 @@
 <?php
 namespace LIV\AppBundle\DataFixtures;
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use LIV\AppBundle\Entity\Address;
+use DateTime;
 use LIV\AppBundle\Entity\EventCategory;
 use LIV\AppBundle\Entity\Event;
 use LIV\AppBundle\Entity\Place;
@@ -70,6 +72,7 @@ class AppFixtures extends Fixture
             $category = new EventCategory();
             $category->setName("eventCategory-" . $i);
             $manager->persist($category);
+            
             //CREATE 10 EVENTS
             $event = new Event();
             $event->setName("event-" . $i);
