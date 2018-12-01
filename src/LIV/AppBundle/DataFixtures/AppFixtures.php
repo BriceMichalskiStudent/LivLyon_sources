@@ -39,8 +39,8 @@ class AppFixtures extends Fixture
             $place->setRating(round($i/4));
             $place->setShortDescription("short description of my beautifull restaurant come on");
             $place->setFullDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus turpis ac lacus interdum porta. Proin aliquet accumsan purus, sed consectetur nisi vestibulum at. Praesent non dictum ipsum. Nunc fermentum velit ligula, non volutpat nisi fermentum ut. Sed sollicitudin ante ut diam ornare congue. Aenean efficitur arcu metus, a malesuada urna tincidunt eget. Integer commodo ante vitae metus egestas, sit amet sollicitudin sapien egestas. Cras vehicula elit id orci bibendum, euismod hendrerit velit semper.");
-            $place->setLatitude(45.0987778);
-            $place->setLongitude(2.0983787883);
+            $place->setLatitude(45.7788368);
+            $place->setLongitude(4.872813299999962);
             $place->setInformation("24/24h 7/7j");
 
             $place->addTag($commonTag);

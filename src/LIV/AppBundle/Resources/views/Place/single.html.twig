@@ -28,6 +28,14 @@
                                     {{ place.information }}
                                 </p>
                             </div>
+
+                            <!-- map -->
+                            <div class="col s12 m12 placeLocation" >
+                                <div id="mapid">
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="card-action">
@@ -39,4 +47,16 @@
 
 
     </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        var center = { latitude: {{ place.latitude }} , longitude: {{ place.longitude }} };
+        var marker = L.marker([{{ place.latitude }}, {{ place.longitude }}]);
+        marker.bindPopup("<b>{{ place.name }}</b>");
+
+        var markers = [marker];
+
+        displayMap();
+    </script>
 {% endblock %}

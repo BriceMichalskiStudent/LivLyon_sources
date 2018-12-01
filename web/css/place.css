@@ -8,7 +8,11 @@
 }
 
 #address{
-    border-bottom: 1px solid lightslategrey;
+
     margin-bottom: 1em;
     padding-bottom: 1em;
+}
+
+.placeLocation{
+    margin-top: 1em;
 }

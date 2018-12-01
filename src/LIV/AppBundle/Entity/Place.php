@@ -110,7 +110,7 @@ class Place
      * @ORM\JoinTable(name="mapping_places_categories")
      */
     private $categories;
-    
+
     // METHOD
 
     /**
