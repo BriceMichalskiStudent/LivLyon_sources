@@ -8,7 +8,11 @@
                     <div class="col s6 m4">
                         <div class="card">
                             <div class="card-image">
-                                <img src="{{ asset('img/background2.jpg') }}">
+                                {% for image in place.images %}
+                                    {% if loop.first %}
+                                        <img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ image.imageName }}">
+                                    {% endif %}
+                                {% endfor %}
                                 <span class="card-title">{{ place.name }}</span>
                             </div>
                             <div class="card-content">

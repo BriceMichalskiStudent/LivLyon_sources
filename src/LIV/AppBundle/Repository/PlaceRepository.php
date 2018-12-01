@@ -17,6 +17,8 @@ class PlaceRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('slug', $slug)
             ->leftJoin('plcs.address', 'ddrss')
             ->addSelect('ddrss')
+            ->leftJoin('plcs.images','mgs')
+            ->addSelect('mgs')
         ;
 
         return $queryBuilder->getQuery()->getOneOrNullResult();

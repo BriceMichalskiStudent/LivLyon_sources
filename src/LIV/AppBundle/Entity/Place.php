@@ -36,6 +36,12 @@ class Place
      */
     private $slug;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link",type="string")
+     */
+    private $link;
 
     /**
      * @var int
@@ -110,6 +116,11 @@ class Place
      * @ORM\JoinTable(name="mapping_places_categories")
      */
     private $categories;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LIV\AppBundle\Entity\PlaceImage", mappedBy="place", cascade={"persist", "remove"})
+     */
+    private $images;
 
     // METHOD
 
@@ -464,5 +475,63 @@ class Place
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return Place
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \LIV\AppBundle\Entity\PlaceImage $image
+     *
+     * @return Place
+     */
+    public function addImage(\LIV\AppBundle\Entity\PlaceImage $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \LIV\AppBundle\Entity\PlaceImage $image
+     */
+    public function removeImage(\LIV\AppBundle\Entity\PlaceImage $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }
