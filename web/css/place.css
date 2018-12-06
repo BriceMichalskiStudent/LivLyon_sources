@@ -6,7 +6,12 @@
     font-size: 1em;
     margin-bottom: 2em;
 }
-
+#rating_tags_block{
+    margin-bottom: 2em;
+}
+#full_description{
+    margin-bottom: 2em;
+}
 #information{
     margin-bottom: 1em;
     padding-bottom: 1em;
@@ -29,3 +34,4 @@
 .ratingStar{
     color: #ffc400;
 }
+

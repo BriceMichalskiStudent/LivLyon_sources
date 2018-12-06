@@ -17,8 +17,8 @@ class PlaceCategoryRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('slug', $slug)
             ->leftJoin('pc.places', 'plcs')
             ->addSelect('plcs')
-            ->leftJoin('plcs.address', 'ddrss')
-            ->addSelect('ddrss')
+            ->leftJoin('plcs.images', 'mgs')
+            ->addSelect('mgs')
             ->leftJoin('plcs.tags', 'tgs')
             ->addSelect('tgs')
         ;

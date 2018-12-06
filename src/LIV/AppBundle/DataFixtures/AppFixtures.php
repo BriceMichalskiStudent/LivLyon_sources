@@ -42,7 +42,7 @@ class AppFixtures extends Fixture
             $place->setFullDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus turpis ac lacus interdum porta. Proin aliquet accumsan purus, sed consectetur nisi vestibulum at. Praesent non dictum ipsum. Nunc fermentum velit ligula, non volutpat nisi fermentum ut. Sed sollicitudin ante ut diam ornare congue. Aenean efficitur arcu metus, a malesuada urna tincidunt eget. Integer commodo ante vitae metus egestas, sit amet sollicitudin sapien egestas. Cras vehicula elit id orci bibendum, euismod hendrerit velit semper.");
             $place->setLatitude(45.7788368);
             $place->setLongitude(4.872813299999962);
-            $place->setInformation("Lundi - Samedi : 16h - 01H /  Dimanche : 13h - 19h");
+            $place->setInformation("Lundi - Samedi : 16h - 01H   Dimanche : 13h - 19h");
             $place->setLink("https://www.hopperlyon.com");
             $place->addTag($commonTag);
             $place->addTag($tag);
@@ -56,10 +56,17 @@ class AppFixtures extends Fixture
 
             $image = new PlaceImage();
             $image->setImageName("demo.jpg");
-            $image->setAlt("demo.jpg");
+            $image->setAlt($place->getName());
             $image->setPlace($place);
 
+            $image2 = new PlaceImage();
+            $image2->setImageName("demo2.jpg");
+            $image2->setAlt($place->getName());
+            $image2->setPlace($place);
+
             $place->addImage($image);
+            $place->addImage($image2);
+
 
             $manager->persist($tag);
             $manager->persist($place);

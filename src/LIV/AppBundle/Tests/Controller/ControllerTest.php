@@ -31,5 +31,6 @@ class ControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertEquals("200", $response->getStatusCode());
+        $this->assertContains("place-0", $response->getContent());
     }
 }
