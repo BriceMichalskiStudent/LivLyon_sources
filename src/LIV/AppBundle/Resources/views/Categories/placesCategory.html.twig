@@ -1,0 +1,35 @@
+{% extends '@LIVApp/Default/layout.html.twig' %}
+
+{% block title %}Liv Lyon - Les {{ category.name }} autour de Lyon{% endblock %}
+{% block description %} La rédaction de Liv Lyon test pour vous les {{ category.name }} de Lyon et vous en fait une critique constructive.  {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row placesPresentation">
+            <div class="col s12 m12">
+                {% for place in category.places %}
+                    <div class="col s6 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                {% for image in place.images %}
+                                    {% if loop.first %}
+                                        <img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ place.name }}">
+                                    {% endif %}
+                                {% endfor %}
+                                <span class="card-title">{{ place.name }}</span>
+                            </div>
+                            <div class="card-content">
+                                <p>
+                                    {{ place.shortDescription }}
+                                </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{ path('show_single_places',{'slugPlace': place.slug, 'slugCategory':category.slug }) }}">Je decouvre</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

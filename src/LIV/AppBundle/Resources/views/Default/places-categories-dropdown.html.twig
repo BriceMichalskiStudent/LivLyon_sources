@@ -1,0 +1,3 @@
+{% for category in placeCategories %}
+    <li><a href="{{ path('show_places_by_category',{'slug': category.slug }) }}">{{ category.name }}</a></li>
+{% endfor %}

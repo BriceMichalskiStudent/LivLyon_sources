@@ -12,15 +12,28 @@
 
     <!-- Import the entire cleancode rule set -->
     <rule ref="rulesets/cleancode.xml" />
-    <!-- Import the entire cleancode rule set -->
-    <rule ref="rulesets/codesize.xml" />
+
     <!-- Import the entire cleancode rule set -->
     <rule ref="rulesets/controversial.xml" />
     <!-- Import the entire cleancode rule set -->
     <rule ref="rulesets/design.xml" />
 
 
-    <!-- Import entire naming rule set and exclude rules -->
+
+
+    <!-- custom max fields -->
+    <rule ref="rulesets/codesize.xml">
+        <exclude name="TooManyFields" />
+    </rule>
+
+    <rule ref="rulesets/codesize.xml/TooManyFields">
+        <priority>1</priority>
+        <properties>
+            <property name="maxfields" value="20"/>
+        </properties>
+    </rule>
+
+    <!-- Custom short variable -->
     <rule ref="rulesets/naming.xml">
         <exclude name="ShortVariable" />
         <exclude name="LongVariable" />

@@ -1,7 +1,8 @@
+{% set places_categories_link = render(controller('LIV\\AppBundle\\Controller\\DefaultController::getPlacesCategories')) %}
+
 
 <!-- NAVIGATION -->
 <!-- LAPTOP -->
-
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
@@ -9,8 +10,9 @@
             <!-- large screen -->
             <ul class="right hide-on-med-and-down">
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown-places">Bonnes adresses<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a href="#"></a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown-events">Evenements<i class="material-icons right">arrow_drop_down</i></a></li>
+
+                <!--    Futur feature
                 <li><a href="#">Fanzine</a></li>
                 <li><a href="#">Shop</a></li>
                 <li>
@@ -22,6 +24,8 @@
                         </div>
                     </form>
                 </li>
+                -->
+
             </ul>
             <!-- Burger bouton for mobile nav-->
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -30,11 +34,7 @@
 
     <!--  places categories dropdown -->
     <ul id="dropdown-places" class="dropdown-content">
-        <li><a href="#!">Café</a></li>
-        <li><a href="#!">Bar</a></li>
-        <li><a href="#!">Restaurant</a></li>
-        <li class="divider"></li>
-        <li><a href="#!">Top 10</a></li>
+        {{ places_categories_link | raw  }}
     </ul>
 
     <!--  events categories dropdown -->
@@ -64,11 +64,7 @@
         <div class="collapsible-header">Bonnes adresses<i class="material-icons">arrow_drop_down</i></div>
         <div class="collapsible-body">
             <ul>
-                <li><a href="#!">Café</a></li>
-                <li><a href="#!">Bar</a></li>
-                <li><a href="#!">Restaurant</a></li>
-                <li class="divider"></li>
-
+                {{ places_categories_link | raw }}
             </ul>
         </div>
     </li>
