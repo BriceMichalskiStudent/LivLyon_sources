@@ -5,12 +5,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class EventController extends Controller
 {
-    public function showAction($slugPlace, $slugCategory)
+    public function showAction($slugEvent, $slugCategory)
     {
         $em = $this->getDoctrine()->getManager();
-        $place = $em->getRepository('LIVAppBundle:Event')->findOneFullBySlug($slugPlace);
-        return $this->render('@LIVApp/Place/single.html.twig', array(
-            "event" => $place,
+        $event = $em->getRepository('LIVAppBundle:Event')->findOneFullBySlug($slugEvent);
+        return $this->render('@LIVApp/Event/single.html.twig', array(
+            "event" => $event,
             "catSlug" => $slugCategory
         ));
     }

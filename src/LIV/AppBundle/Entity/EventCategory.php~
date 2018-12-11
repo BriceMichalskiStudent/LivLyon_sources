@@ -116,38 +116,5 @@ class EventCategory
     }
 
 
-
-    /**
-     * Add event
-     *
-     * @param \LIV\AppBundle\Entity\Event $event
-     *
-     * @return EventCategory
-     */
-    public function addEvent(\LIV\AppBundle\Entity\Event $event)
-    {
-        $this->events[] = $event;
-
-        return $this;
-    }
-
-    /**
-     * Remove event
-     *
-     * @param \LIV\AppBundle\Entity\Event $event
-     */
-    public function removeEvent(\LIV\AppBundle\Entity\Event $event)
-    {
-        $this->events->removeElement($event);
-    }
-
-    /**
-     * Get events
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEvents()
-    {
-        return $this->events;
-    }
 }
+

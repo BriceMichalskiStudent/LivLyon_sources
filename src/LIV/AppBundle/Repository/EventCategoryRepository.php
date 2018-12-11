@@ -10,4 +10,15 @@ namespace LIV\AppBundle\Repository;
  */
 class EventCategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllEventByCategorySlug($slug)
+    {
+        $queryBuilder = $this->createqueryBuilder('ec')
+            ->where('ec.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->leftJoin('ec.events', 'evts')
+            ->addSelect('evts')
+        ;
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
 }
