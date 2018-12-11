@@ -11,36 +11,40 @@
                     {% endfor %}
                     <span class="card-title" style="font-weight: bold">{{ event.name }}</span>
                 </div>
-            </div>
-            <div class="row">
-                <div class="card-content">
-                    <p class="col s12 m12" id="short_description">
-                        " {{ event.shortDescription }} "
-                    </p>
-                    <div class="col s12 m9">
-                        <!-- description -->
-                        <p class="col s12 m12" id="full_description" >
 
-                            {{ event.fullDescription }}
-                        </p>
-                    </div>
-
-                    <div class="col s12 m3" style="text-align: center">
-                        <p id="dates">
-                            <span style="font-weight: bold">Date et horaires :<br></span>
-                        <p> Début: </p>
-                        {{ event.startingDate|date("d-m-Y H:i:s") }}
-                        <p> Fin: </p>
-                        {{ event.endingDate|date("d-m-Y H:i:s") }}
-                        </p>
-                    </div>
-
-                    <!-- map -->
-                    <div class="col s12 m12 placeLocation" >
-                        <div id="mapid">
+                <div class="row">
+                    <div class="card-content">
+                        <div class="col s12 m2">
+                            <i class="material-icons">access_time</i>
+                            <span style="font-weight: bold">{{ event.startingDate|date("d-m-Y") }}</span>
                         </div>
-                    </div>
+                        <p class="col s12 m10" id="short_description">
+                            " {{ event.shortDescription }} "
+                        </p>
+                        <div class="col s12 m9">
+                            <!-- description -->
+                            <p class="col s12 m12" id="full_description" >
 
+                                {{ event.fullDescription }}
+                            </p>
+                        </div>
+
+                        <div class="col s12 m3" style="text-align: center">
+                            <p id="dates" style="text-align: center">
+                                <span style="font-weight: bold">DU<br></span><br>
+                                <span>{{ event.startingDate|date("d-m-Y") }}<br>{{ event.startingDate|date("H") }}h{{ event.startingDate|date("i") }}<br></span><br>
+                                <span style="font-weight: bold">AU <br></span><br>
+                                <span>{{ event.startingDate|date("d-m-Y") }}<br>{{ event.endingDate|date("H") }}h{{ event.endingDate|date("i") }}<br></span>
+                            </p>
+                        </div>
+
+                        <!-- map -->
+                        <div class="col s12 m12 placeLocation">
+                            <div id="mapid">
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>

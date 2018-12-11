@@ -6,10 +6,12 @@ use Doctrine\Common\Persistence\ObjectManager;
 use LIV\AppBundle\Entity\Address;
 use LIV\AppBundle\Entity\EventCategory;
 use LIV\AppBundle\Entity\Event;
+use LIV\AppBundle\Entity\EventImage;
 use LIV\AppBundle\Entity\Place;
 use LIV\AppBundle\Entity\PlaceCategory;
 use LIV\AppBundle\Entity\PlaceImage;
 use LIV\AppBundle\Entity\Tag;
+use Symfony\Component\DomCrawler\Image;
 
 class AppFixtures extends Fixture
 {
@@ -89,6 +91,20 @@ class AppFixtures extends Fixture
             $event->setLink("http://livlyon.com");
             $event->addCategory($commonCategory);
             $event->addCategory($category);
+
+            $image = new EventImage();
+            $image->setImageName('demo-event1.jpg');
+            $image->setAlt($event->getName());
+            $image->setEvent($event);
+
+            $image1 = new EventImage();
+            $image1->setImageName('demo-event2.jpg');
+            $image1->setAlt($event->getName());
+            $image1->setEvent($event);
+
+            $event->addImage($image);
+            $event->addImage($image1);
+
             $manager->persist($event);
         }
         $manager->flush();
