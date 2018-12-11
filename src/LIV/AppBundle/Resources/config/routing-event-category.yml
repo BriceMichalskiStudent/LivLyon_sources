@@ -1,4 +1,4 @@
 show_events_by_category:
-  path:    /{slug}
+  path:    /events/{slug}
   defaults : { _controller: LIVAppBundle:EventCategory:show }
   methods: [GET]

@@ -4,7 +4,6 @@ namespace LIV\AppBundle\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use LIV\AppBundle\Entity\Address;
-use DateTime;
 use LIV\AppBundle\Entity\EventCategory;
 use LIV\AppBundle\Entity\Event;
 use LIV\AppBundle\Entity\Place;
@@ -78,10 +77,9 @@ class AppFixtures extends Fixture
             //CREATE 10 EVENTS
             $event = new Event();
             $event->setName("event-" . $i);
-            $date = new \DateTime('now');
-            $event->setStartingDate($date);
-            $event->setEndingDate($date);
-            $event->setShortDescription("Short description of this amazing event, let's go boys");
+            $event->setStartingDate( new \DateTime('now'));
+            $event->setEndingDate(new \DateTime('tomorrow'));
+            $event->setShortDescription("Short description of this amazing event, let's go guys");
             $event->setFullDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Quisque rhoncus turpis ac lacus interdum porta. Proin aliquet accumsan purus, sed consectetur nisi 
             vestibulum at. Praesent non dictum ipsum. Nunc fermentum velit ligula, non volutpat nisi fermentum ut. 

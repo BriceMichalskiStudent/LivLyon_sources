@@ -8,28 +8,8 @@
                     <img src="{{ asset('img/background2.jpg') }}">
                     <span class="card-title" style="font-weight: bold">{{ event.name }}</span>
                 </div>
-                <div class="row">
-                    <div class="card-content">
-                        <p class="col s12 m12" id="short_description">
-                            " {{ event.shortDescription }} "
-                        </p>
-                        <p class="col s12 m9">
-                            {{ event.fullDescription }}
-                        </p>
 
-                        <div class="col s12 m3" style="text-align: right">
-                            <p id="address">
-                                <span style="font-weight: bold">Adresse :<br></span>
-                                {{ event.address.streetNumber }} {{ event.address.street }}<br>
-                                {{ event.address.zipCode }} {{ event.address.city }}
-                            </p>
-                            <p style="margin-bottom: 3em;">
-                                <span style="font-weight: bold">Horaire :<br></span>
-                                {{ event.information }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="card-action">
                     <a href="" class="waves-effect waves-light btn">Voir la page officielle</a>
                     <a href="#"></a>
