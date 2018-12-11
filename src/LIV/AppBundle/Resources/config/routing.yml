@@ -5,14 +5,11 @@ liv_app_homepage:
 liv_place:
     resource: "@LIVAppBundle/Resources/config/routing-place.yml"
 
-<<<<<<< HEAD
-liv_place_category:
-    resource: "@LIVAppBundle/Resources/config/routing-place-category.yml"
-=======
 liv_event:
     resource: "@LIVAppBundle/Resources/config/routing-event.yml"
 
->>>>>>> fix #8:update repo+routes+entities
+liv_place_category:
+    resource: "@LIVAppBundle/Resources/config/routing-place-category.yml"
 
 liv_event_category:
     resource: "@LIVAppBundle/Resources/config/routing-event-category.yml"

@@ -1,10 +1,6 @@
 <?php
 namespace LIV\AppBundle\DataFixtures;
 
-<<<<<<< HEAD
-=======
-use DateTime;
->>>>>>> fix #8:update repo+routes+entities
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use LIV\AppBundle\Entity\Address;
@@ -72,27 +68,17 @@ class AppFixtures extends Fixture
         $manager->persist($commonCategory);
 
         for ($i = 0; $i < 10; $i++) {
-<<<<<<< HEAD
-=======
 
->>>>>>> fix #8:update repo+routes+entities
             //CREATE 10 CATEGORIES OF EVENTS
             $category = new EventCategory();
             $category->setName("eventCategory-" . $i);
             $manager->persist($category);
-<<<<<<< HEAD
-            
-            //CREATE 10 EVENTS
-            $event = new Event();
-            $event->setName("event-" . $i);
-            $date = new \DateTime('now');
-=======
+
 
             //CREATE 10 EVENTS
             $event = new Event();
             $event->setName("event-" . $i);
-            $date = new DateTime('now');
->>>>>>> fix #8:update repo+routes+entities
+            $date = new \DateTime('now');
             $event->setStartingDate($date);
             $event->setEndingDate($date);
             $event->setShortDescription("Short description of this amazing event, let's go boys");
