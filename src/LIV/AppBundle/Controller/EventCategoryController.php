@@ -4,8 +4,8 @@ namespace LIV\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class EventCategoryController extends Controller{
-
+class EventCategoryController extends Controller
+{
     public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();

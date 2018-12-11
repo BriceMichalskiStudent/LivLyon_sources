@@ -77,7 +77,7 @@ class AppFixtures extends Fixture
             //CREATE 10 EVENTS
             $event = new Event();
             $event->setName("event-" . $i);
-            $event->setStartingDate( new \DateTime('now'));
+            $event->setStartingDate(new \DateTime('now'));
             $event->setEndingDate(new \DateTime('tomorrow'));
             $event->setShortDescription("Short description of this amazing event, let's go guys");
             $event->setFullDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. 

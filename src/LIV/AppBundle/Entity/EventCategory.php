@@ -111,8 +111,9 @@ class EventCategory
     /**
      * @ORM\PrePersist
      */
-    public function setSlugable(){
-        $this->slug = str_replace(' ','-',$this->name);
+    public function setSlugable()
+    {
+        $this->slug = str_replace(' ', '-', $this->name);
     }
 
 

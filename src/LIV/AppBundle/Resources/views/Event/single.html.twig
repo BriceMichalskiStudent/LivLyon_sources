@@ -2,21 +2,48 @@
 
 {% block body %}
     <div class="container">
+
         <div class="col s12 m12">
             <div class="card">
-                <div class="card-image">
-                    <img src="{{ asset('img/background2.jpg') }}">
+                <div class="card-image carousel carousel-slider center">
+                    {% for image in event.images %}
+                        <img src="{{ asset('img/event/' ~ image.imageName ) }}" alt="{{ image.alt }}" class="carousel-item">
+                    {% endfor %}
                     <span class="card-title" style="font-weight: bold">{{ event.name }}</span>
                 </div>
+            </div>
+            <div class="row">
+                <div class="card-content">
+                    <p class="col s12 m12" id="short_description">
+                        " {{ event.shortDescription }} "
+                    </p>
+                    <div class="col s12 m9">
+                        <!-- description -->
+                        <p class="col s12 m12" id="full_description" >
 
+                            {{ event.fullDescription }}
+                        </p>
+                    </div>
 
-                <div class="card-action">
-                    <a href="" class="waves-effect waves-light btn">Voir la page officielle</a>
-                    <a href="#"></a>
+                    <div class="col s12 m3" style="text-align: center">
+                        <p id="dates">
+                            <span style="font-weight: bold">Date et horaires :<br></span>
+                        <p> Début: </p>
+                        {{ event.startingDate|date("d-m-Y H:i:s") }}
+                        <p> Fin: </p>
+                        {{ event.endingDate|date("d-m-Y H:i:s") }}
+                        </p>
+                    </div>
+
+                    <!-- map -->
+                    <div class="col s12 m12 placeLocation" >
+                        <div id="mapid">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-
 
     </div>
 {% endblock %}

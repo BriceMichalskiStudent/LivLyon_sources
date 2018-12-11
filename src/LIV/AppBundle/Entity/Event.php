@@ -94,6 +94,11 @@ class Event
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="LIV\AppBundle\Entity\EventImage", mappedBy="event", cascade={"persist", "remove"})
+     */
+    private $images;
+
 
     /**
      * @ORM\PrePersist
@@ -375,5 +380,39 @@ class Event
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \LIV\AppBundle\Entity\EventImage $image
+     *
+     * @return Event
+     */
+    public function addImage(EventImage $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \LIV\AppBundle\Entity\EventImage $image
+     */
+    public function removeImage(EventImage $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }
