@@ -10,6 +10,7 @@ class DefaultController extends Controller
     {
         return $this->render('@LIVApp/Default/index.html.twig');
     }
+
     public function getPlacesCategories()
     {
         $em = $this->getDoctrine()->getManager();
@@ -24,6 +25,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $eventCategories = $em->getRepository('LIVAppBundle:EventCategory')->findAll();
+
         return $this->render('@LIVApp/Default/events-categories-dropdown.html.twig', array(
             "eventCategories" => $eventCategories
         ));
