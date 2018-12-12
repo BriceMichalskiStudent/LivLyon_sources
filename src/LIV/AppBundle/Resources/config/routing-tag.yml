@@ -1,0 +1,4 @@
+liv_single_tag:
+  path:    /tags/{tagName}
+  defaults: { _controller: LIVAppBundle:Tag:show }
+  methods: [GET]

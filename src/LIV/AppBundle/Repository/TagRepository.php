@@ -10,4 +10,17 @@ namespace LIV\AppBundle\Repository;
  */
 class TagRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findOneFullByTag($tagName)
+    {
+        $queryBuilder = $this->createQueryBuilder('tag')
+            ->where("tag.name = :name")
+            ->setParameter('name', $tagName)
+            ->leftJoin('tag.places', 'plcs')
+            ->addSelect('plcs')
+            ->leftJoin('plcs.images', 'mgs')
+            ->addSelect('mgs')
+        ;
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
 }

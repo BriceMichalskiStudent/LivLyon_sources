@@ -4,72 +4,67 @@
 
 {% block body %}
     <div class="container">
-                <div class="card">
-                    <div class="card-image carousel carousel-slider center">
-                        {% for image in place.images %}
-                                <img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ image.alt }}" class="carousel-item">
-                        {% endfor %}
-                        <span class="card-title" style="font-weight: bold">{{ place.name }}</span>
+        <div class="card">
+            <div class="card-image carousel carousel-slider center">
+                {% for image in place.images %}
+                        <img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ image.alt }}" class="carousel-item">
+                {% endfor %}
+                <span class="card-title" style="font-weight: bold">{{ place.name }}</span>
+            </div>
+            <div class="row">
+                <div class="card-content">
+                    <p class="col s12 m12" id="short_description">
+                        " {{ place.shortDescription }} "
+                    </p>
+                    <div class="col s12 m9">
+                        <p class="col s12 m12" id="rating_tags_block">
+                            <span style="font-weight: bold">Notre avis: </span>
+
+                            {% for i in 1..5 %}
+                                {% if place.rating >= i %}
+                                    <span class="ratingStar"> ★ </span>
+                                {% else %}
+                                    <span class="ratingStar"> ☆ </span>
+                                {%  endif %}
+                            {% endfor %}
+                        </p>
+                        <!-- description -->
+                        <p class="col s12 m12" id="full_description">
+
+                            {{ place.fullDescription }}
+                        </p>
+                        <p class="col s12 m12">
+                            {% for tag in place.tags %}
+                                <a href="{{ path('liv_single_tag',{'tagName': tag.name }) }}" class="chip tag">{{ tag.name }}</a>
+                            {% endfor %}
+                        </p>
                     </div>
-                    <div class="row">
-                        <div class="card-content">
-                            <p class="col s12 m12" id="short_description">
-                                " {{ place.shortDescription }} "
-                            </p>
-                            <div class="col s12 m9">
-                                <p class="col s12 m12" id="rating_tags_block">
-                                    <span style="font-weight: bold">Notre avis: </span>
 
-                                    {% for i in 1..5 %}
-                                        {% if place.rating >= i %}
-                                            <span class="ratingStar"> ★ </span>
-                                        {% else %}
-                                            <span class="ratingStar"> ☆ </span>
-                                        {%  endif %}
-                                    {% endfor %}
-                                    <br>
-                                    <span style="font-weight: bold">Tags: </span>
-                                    {% for tag in place.tags %}
-                                        <span> {{ tag.name }}</span>
-                                        {% if not loop.last %}
-                                            <span> , </span>
-                                        {% endif %}
-                                    {% endfor %}
-                                </p>
-                                <!-- description -->
-                                <p class="col s12 m12" id="full_description">
-                                    {{ place.fullDescription }}
-                                </p>
-                            </div>
+                    <div class="col s12 m3" style="text-align: center">
+                        <p id="information">
+                            <span style="font-weight: bold">Horaire :<br></span>
+                            {{ place.information }}
+                        </p>
 
-                            <div class="col s12 m3" style="text-align: center">
-                                <p id="information">
-                                    <span style="font-weight: bold">Horaire :<br></span>
-                                    {{ place.information }}
-                                </p>
+                        <p id="address">
+                            <span style="font-weight: bold">Adresse :</span><br>
+                            {{ place.address.streetNumber }} {{ place.address.street }}<br>
+                            {{ place.address.zipCode }} {{ place.address.city }}
+                        </p>
+                    </div>
 
-                                <p id="address">
-                                    <span style="font-weight: bold">Adresse :</span><br>
-                                    {{ place.address.streetNumber }} {{ place.address.street }}<br>
-                                    {{ place.address.zipCode }} {{ place.address.city }}
-                                </p>
-                            </div>
-
-                            <!-- map -->
-                            <div class="col s12 m12 placeLocation" >
-                                <div id="mapid">
-                                </div>
-                            </div>
-
+                    <!-- map -->
+                    <div class="col s12 m12 placeLocation" >
+                        <div id="mapid">
                         </div>
                     </div>
-                    <div class="card-action">
-                        <a href="{{ place.link }}" target="_blank" class="waves-effect waves-light btn">Voir la page officielle</a>
-                    </div>
+
                 </div>
             </div>
-
-
+            <div class="card-action">
+                <a href="{{ place.link }}" target="_blank" class="waves-effect waves-light btn">Voir la page officielle</a>
+            </div>
+        </div>
     </div>
 {% endblock %}
 

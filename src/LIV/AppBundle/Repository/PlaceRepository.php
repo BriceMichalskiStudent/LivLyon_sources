@@ -2,6 +2,8 @@
 
 namespace LIV\AppBundle\Repository;
 
+use LIV\AppBundle\Entity\Tag;
+
 /**
  * PlaceRepository
  *
@@ -10,6 +12,11 @@ namespace LIV\AppBundle\Repository;
  */
 class PlaceRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $slug
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function findOneFullBySlug($slug)
     {
         $queryBuilder = $this->createQueryBuilder('plcs')
@@ -24,6 +31,7 @@ class PlaceRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 
+
     public function findLastWithImage()
     {
         $queryBuilder = $this->createQueryBuilder('plc')
@@ -31,9 +39,21 @@ class PlaceRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('plc.createdAt', 'DESC')
             ->setMaxResults(1)
             ->leftJoin('plc.images', 'mgs')
-            ->addSelect('mgs')
-        ;
+            ->addSelect('mgs');
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+
+    public function findAllByTagName(Tag $tag)
+    {
+        $queryBuilder = $this->createQueryBuilder('plcs')
+            ->where("plcs.id >= 0")
+            ->leftJoin('plcs.tags', 'tags')
+            ->where("tags = :tags")
+            ->setParameter('tags', $tag)
+        ;
+
+        return $queryBuilder->getQuery()->getArrayResult();
+
     }
 }

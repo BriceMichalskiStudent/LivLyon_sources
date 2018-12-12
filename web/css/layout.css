@@ -19,3 +19,11 @@
 .placesPresentation{
     margin-top: 2em;
 }
+.tagName{
+    font-size: 0.6em;
+    padding: 0.5em;
+    border-radius: 1em;
+    background-color: lightgray;
+
+    color: darkgray;
+}
