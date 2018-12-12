@@ -8,7 +8,12 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('@LIVApp/Default/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $sponsoredPlace = $em->getRepository('LIVAppBundle:Place')->findLastWithImage();
+
+        return $this->render('@LIVApp/Default/index.html.twig',array(
+            "sponsoredPlace" => $sponsoredPlace
+        ));
     }
 
     public function getPlacesCategories()
