@@ -11,7 +11,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $sponsoredPlace = $em->getRepository('LIVAppBundle:Place')->findLastWithImage();
 
-        return $this->render('@LIVApp/Default/index.html.twig',array(
+        return $this->render('@LIVApp/Default/index.html.twig', array(
             "sponsoredPlace" => $sponsoredPlace
         ));
     }

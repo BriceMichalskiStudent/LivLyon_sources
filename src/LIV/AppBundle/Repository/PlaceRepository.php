@@ -24,10 +24,11 @@ class PlaceRepository extends \Doctrine\ORM\EntityRepository
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 
-    public function findLastWithImage(){
+    public function findLastWithImage()
+    {
         $queryBuilder = $this->createQueryBuilder('plc')
             ->where("plc.id >= 0")
-            ->orderBy('plc.createdAt','DESC')
+            ->orderBy('plc.createdAt', 'DESC')
             ->setMaxResults(1)
             ->leftJoin('plc.images', 'mgs')
             ->addSelect('mgs')
