@@ -18,3 +18,4 @@
 .idea/*
 .php_cs.cache
 web/img/place/*
+web/img/event/*

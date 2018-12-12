@@ -56,16 +56,23 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="fullDescription", type="string", length=255)
+     * @ORM\Column(name="fullDescription", type="text")
      */
     private $fullDescription;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="link", type="string", length=255, nullable=true)
+     * @ORM\Column(name="linkTicketing", type="string", length=255, nullable=true)
      */
-    private $link;
+    private $linkTicketing;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkOrganiser", type="string", length=255, nullable=true)
+     */
+    private $linkOrganiser;
 
     /**
      * @ORM\ManyToMany(targetEntity="EventCategory", inversedBy="events")
@@ -98,6 +105,26 @@ class Event
      * @ORM\OneToMany(targetEntity="LIV\AppBundle\Entity\EventImage", mappedBy="event", cascade={"persist", "remove"})
      */
     private $images;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="LIV\AppBundle\Entity\Address", cascade={"persist","persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $address;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longitude", type="float")
+     */
+    private $longitude;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="latitude", type="float")
+     */
+    private $latitude;
 
 
     /**
@@ -414,5 +441,125 @@ class Event
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set linkTicketing
+     *
+     * @param string $linkTicketing
+     *
+     * @return Event
+     */
+    public function setLinkTicketing($linkTicketing)
+    {
+        $this->linkTicketing = $linkTicketing;
+
+        return $this;
+    }
+
+    /**
+     * Get linkTicketing
+     *
+     * @return string
+     */
+    public function getLinkTicketing()
+    {
+        return $this->linkTicketing;
+    }
+
+    /**
+     * Set linkOrganiser
+     *
+     * @param string $linkOrganiser
+     *
+     * @return Event
+     */
+    public function setLinkOrganiser($linkOrganiser)
+    {
+        $this->linkOrganiser = $linkOrganiser;
+
+        return $this;
+    }
+
+    /**
+     * Get linkOrganiser
+     *
+     * @return string
+     */
+    public function getLinkOrganiser()
+    {
+        return $this->linkOrganiser;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param float $longitude
+     *
+     * @return Event
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param float $latitude
+     *
+     * @return Event
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set address
+     *
+     * @param \LIV\AppBundle\Entity\Address $address
+     *
+     * @return Event
+     */
+    public function setAddress(\LIV\AppBundle\Entity\Address $address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return \LIV\AppBundle\Entity\Address
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }

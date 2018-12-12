@@ -88,9 +88,12 @@ class AppFixtures extends Fixture
             Sed sollicitudin ante ut diam ornare congue. Aenean efficitur arcu metus, a malesuada urna tincidunt eget. 
             Integer commodo ante vitae metus egestas, sit amet sollicitudin sapien egestas. Cras vehicula elit id 
             orci bibendum, euismod hendrerit velit semper.");
-            $event->setLink("http://livlyon.com");
+            $event->setLinkOrganiser("#!");
+            $event->setLinkTicketing("#!");
             $event->addCategory($commonCategory);
             $event->addCategory($category);
+            $event->setLatitude(45.7788368);
+            $event->setLongitude(4.872813299999962);
 
             $image = new EventImage();
             $image->setImageName('demo-event1.jpg');
