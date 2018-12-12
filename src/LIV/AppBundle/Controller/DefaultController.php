@@ -20,4 +20,14 @@ class DefaultController extends Controller
             "placeCategories" => $placeCategories
         ));
     }
+
+    public function getEventsCategories()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $eventCategories = $em->getRepository('LIVAppBundle:EventCategory')->findAll();
+
+        return $this->render('@LIVApp/Default/events-categories-dropdown.html.twig', array(
+            "eventCategories" => $eventCategories
+        ));
+    }
 }

@@ -5,7 +5,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"  media="screen,projection"/>
+
     <!--Import layout.css-->
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/layout.css') }}"  media="screen,projection"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -14,9 +16,9 @@
     <meta name="description" content="{% block description %}{% endblock %}" />
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" />
     <title>{% block title %}Liv Lyon{% endblock %}</title>
-
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/layout.css') }}"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet"  href="{{ asset('css/place.css') }}" media="screen,projection">
+    <link type="text/css" rel="stylesheet"  href="{{ asset('css/event.css') }}" media="screen,projection">
+
 </head>
 
 <body>
@@ -43,7 +45,9 @@
         integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
         crossorigin=""></script>
 <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
+
 {% block js %}
 {% endblock %}
+
 </body>
 </html>

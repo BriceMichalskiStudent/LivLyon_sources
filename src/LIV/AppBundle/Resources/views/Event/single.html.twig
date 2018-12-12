@@ -1,0 +1,68 @@
+{% extends '@LIVApp/Default/layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="col s12 m12">
+            <div class="card">
+                <div class="card-image carousel carousel-slider center">
+                    {% for image in event.images %}
+                        <img src="{{ asset('img/event/' ~ image.imageName ) }}" alt="{{ image.alt }}" class="carousel-item">
+                    {% endfor %}
+                    <span class="card-title" style="font-weight: bold">{{ event.name }}</span>
+                </div>
+                <div class="row">
+                    <div class="card-content">
+                        <p class="col s12 m12" id="short_description" style="text-align: center">
+                            " {{ event.shortDescription }} "
+                        </p>
+                        <div class="col s12 m12">
+                            <i class="material-icons">access_time</i>
+                            <span style="font-weight: bold" id="date">{{ event.startingDate|date("d-m-Y") }}</span>
+                        </div>
+                        <div class="col s12 m9">
+                            <!-- description -->
+                            <p class="col s12 m12" id="event_full_description">
+                                {{ event.fullDescription }}
+                            </p>
+                        </div>
+                        <div class="col s12 m3" style="text-align: center">
+                            <p id="dates" style="text-align: center">
+                                <span style="font-weight: bold; font-size: 1.1em; color: red">DU<br></span>
+                                <span style="font-weight: bold">{{ event.startingDate|date("d-m-Y") }}<br></span>
+                                <span>{{ event.startingDate|date("H") }}h{{ event.startingDate|date("i") }}<br></span><br>
+                                <span style="font-weight: bold; font-size: 1.1em; color: blue">AU <br></span>
+                                <span style="font-weight: bold">{{ event.startingDate|date("d-m-Y") }}<br></span>
+                                <span>{{ event.endingDate|date("H") }}h{{ event.endingDate|date("i") }}<br></span>
+                            </p>
+                        </div>
+                        <div class="col s12 m9">
+                            <div class="collection" id="links">
+                                <a href="{{ event.linkTicketing }}" class="collection-item"><span class="badge">Organisateur</span>Voir l'organisateur</a>
+                                <a href="{{ event.linkOrganiser }}" class="collection-item"><span class="badge">Billets/Tickets</span>Réserver ma place</a>
+                            </div>
+                        </div>
+
+                        <!-- map -->
+                        <div class="col s12 m12 placeLocation">
+                            <div id="mapid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        var center = { latitude: {{ event.latitude }} , longitude: {{ event.longitude }} };
+        var marker = L.marker([{{ event.latitude }}, {{ event.longitude }}]);
+        marker.bindPopup("<b>{{ event.name }}</b>");
+
+        var markers = [marker];
+
+        displayMap();
+    </script>
+{% endblock %}

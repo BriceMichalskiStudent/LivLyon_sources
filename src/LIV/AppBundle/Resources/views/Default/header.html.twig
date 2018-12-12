@@ -1,5 +1,5 @@
 {% set places_categories_link = render(controller('LIV\\AppBundle\\Controller\\DefaultController::getPlacesCategories')) %}
-
+{% set events_categories_link = render(controller('LIV\\AppBundle\\Controller\\DefaultController::getEventsCategories')) %}
 
 <!-- NAVIGATION -->
 <!-- LAPTOP -->
@@ -39,12 +39,9 @@
 
     <!--  events categories dropdown -->
     <ul id="dropdown-events" class="dropdown-content">
-        <li><a href="#!">Soirée</a></li>
-        <li><a href="#!">Concert</a></li>
-        <li><a href="#!">Culturel</a></li>
-        <li class="divider"></li>
-        <li><a href="#!">Top 10</a></li>
+        {{ events_categories_link | raw  }}
     </ul>
+
 </div>
 
 
@@ -72,13 +69,11 @@
         <div class="collapsible-header">Evénements<i class="material-icons">arrow_drop_down</i></div>
         <div class="collapsible-body">
             <ul>
-                <li><a href="#!">Soirée</a></li>
-                <li><a href="#!">Concert</a></li>
-                <li><a href="#!">Culturel</a></li>
-                <li class="divider"></li>
+                {{ events_categories_link | raw }}
             </ul>
         </div>
-    </li><li><a href="#">Fanzine</a></li>
+    </li>
+    <li><a href="#">Fanzine</a></li>
     <li><a href="#">Shop</a></li>
 </ul>
 
