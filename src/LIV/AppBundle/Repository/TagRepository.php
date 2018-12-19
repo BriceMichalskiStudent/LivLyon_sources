@@ -19,7 +19,7 @@ class TagRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('plcs')
             ->leftJoin('plcs.images', 'mgs')
             ->addSelect('mgs')
-            ->leftJoin('tag.events','vnts')
+            ->leftJoin('tag.events', 'vnts')
             ->addSelect('vnts')
             ->leftJoin('vnts.images', 'vntsMgs')
             ->addSelect('vntsMgs')
