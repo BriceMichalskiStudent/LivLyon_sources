@@ -27,3 +27,8 @@
 
     color: darkgray;
 }
+.tag:hover {
+    color: white;
+    background-color: #ec311d;
+    cursor: pointer;
+}

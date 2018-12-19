@@ -70,4 +70,17 @@ class ControllerTest extends WebTestCase
         $this->assertContains("tag-1", $response2->getContent());
         $this->assertContains("place-1", $response2->getContent());
     }
+
+    public function testNotFound()
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/events/common/fooBarBaz');
+        $response = $client->getResponse();
+        $this->assertEquals("404", $response->getStatusCode());
+
+        $client->request('GET', '/places/common/fooBarBaz');
+        $response = $client->getResponse();
+        $this->assertEquals("404", $response->getStatusCode());
+    }
 }

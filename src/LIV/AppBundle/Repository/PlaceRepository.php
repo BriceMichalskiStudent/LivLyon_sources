@@ -26,6 +26,8 @@ class PlaceRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('ddrss')
             ->leftJoin('plcs.images', 'mgs')
             ->addSelect('mgs')
+            ->leftJoin('plcs.tags', 'tgs')
+            ->addSelect('tgs')
         ;
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
@@ -54,6 +56,5 @@ class PlaceRepository extends \Doctrine\ORM\EntityRepository
         ;
 
         return $queryBuilder->getQuery()->getArrayResult();
-
     }
 }

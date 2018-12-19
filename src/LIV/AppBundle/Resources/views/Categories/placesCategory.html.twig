@@ -9,7 +9,7 @@
             <div class="col s12 m12">
                 {% for place in category.places %}
                     <div class="col s6 m4">
-                        <div class="card">
+                        <div class="card hoverable">
                             <div class="card-image">
                                 {% for image in place.images %}
                                     {% if loop.first %}
@@ -24,7 +24,7 @@
                                 </p>
                             </div>
                             <div class="card-action">
-                                <a href="{{ path('show_single_places',{'slugPlace': place.slug, 'slugCategory':category.slug }) }}" style="color: #ec311d">Je decouvre</a>
+                                <a href="{{ path('show_single_place',{'slugPlace': place.slug, 'slugCategory':category.slug }) }}" style="color: #ec311d">Je decouvre</a>
                             </div>
                         </div>
                     </div>

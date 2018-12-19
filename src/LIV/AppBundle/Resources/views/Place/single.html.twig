@@ -35,7 +35,7 @@
                         </p>
                         <p class="col s12 m12">
                             {% for tag in place.tags %}
-                                <a href="{{ path('liv_single_tag',{'tagName': tag.name }) }}" class="chip tag">{{ tag.name }}</a>
+                                <a href="{{ path('liv_single_tag',{'tagName': tag.name }) }}" class="chip tag hoverable">{{ tag.name }}</a>
                             {% endfor %}
                         </p>
                     </div>

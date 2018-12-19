@@ -5,59 +5,63 @@
 
 {% block body %}
     <div class="container">
-        <div class="row placesPresentation">
-           <div class="col s12 m12"><h2 ><span  class="tagName">#{{ tag.name }}</span></h2></div>
-            <div class="col s12 m6">
-                <h3 class="col s12 12 ">Lieux </h3>
-                {% for place in tag.places %}
-                    <div class="col s12 m6">
-                        <div class="card">
-                            <div class="card-image">
-                                {% for image in place.images %}
-                                    {% if loop.first %}
-                                        <img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ place.name }}">
-                                    {% endif %}
-                                {% endfor %}
-                                <span class="card-title">{{ place.name }}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>
-                                    {{ place.shortDescription }}
-                                </p>
-                            </div>
-                            <div class="card-action">
-                                <a href="{{ path('show_single_places',{'slugPlace': place.slug, 'slugCategory':'common'}) }}" style="color: #ec311d">Je decouvre</a>
+        <h1 style="text-align: center; font-size: 2em; color: darkgray;"> #{{ tag.name }} </h1>
+        <ul class="collapsible" style="margin-bottom: 3em ">
+            <li class="active">
+                <div class="collapsible-header"><i class="material-icons">place</i>Lieux</div>
+                <div class="collapsible-body row">
+                    {% for place in tag.places %}
+                        <div class="col s6 m4">
+                            <div class="card hoverable">
+                                <div class="card-image">
+                                    {% for image in place.images %}
+                                        {% if loop.first %}
+                                            <img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ place.name }}">
+                                        {% endif %}
+                                    {% endfor %}
+                                    <span class="card-title">{{ place.name }}</span>
+                                </div>
+                                <div class="card-content">
+                                    <p>
+                                        {{ place.shortDescription }}
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="{{ path('show_single_place',{'slugPlace': place.slug, 'slugCategory':'common'}) }}"  style="color: #ec311d">Je decouvre</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
+                    {% endfor %}
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">date_range</i>Events</div>
+                <div class="collapsible-body row">
+                    {% for event in tag.events %}
+                        <div class="col s6 m4">
+                            <div class="card hoverable">
+                                <div class="card-image">
+                                    {% for image in event.images %}
+                                        {% if loop.first %}
+                                            <img src="{{ asset('img/event/' ~ image.imageName ) }}" alt="{{ event.name }}">
+                                        {% endif %}
+                                    {% endfor %}
+                                    <span class="card-title">{{ event.name }}</span>
+                                </div>
+                                <div class="card-content">
+                                    <p>
+                                        {{ event.shortDescription }}
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="{{ path('show_single_event',{'slugEvent': event.slug, 'slugCategory':'common'}) }}" style="color: #ec311d">Je decouvre</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
 
-            <div class="col s12 m6">
-                <h3 class="col s12 12">Evenements</h3>
-                {% for place in tag.places %}
-                    <div class="col s12 m6">
-                        <div class="card">
-                            <div class="card-image">
-                                {% for image in place.images %}
-                                    {% if loop.first %}
-                                        <img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ place.name }}">
-                                    {% endif %}
-                                {% endfor %}
-                                <span class="card-title">{{ place.name }}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>
-                                    {{ place.shortDescription }}
-                                </p>
-                            </div>
-                            <div class="card-action">
-                                <a href="{{ path('show_single_places',{'slugPlace': place.slug, 'slugCategory':'common'}) }}" style="color: #ec311d">Je decouvre</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
     </div>
 {% endblock %}

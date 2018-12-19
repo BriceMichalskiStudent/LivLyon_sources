@@ -35,9 +35,3 @@
 .ratingStar{
     color: #ffc400;
 }
-.tag:hover {
-    color: white;
-    background-color: #ec311d;
-    cursor: pointer;
-}
-

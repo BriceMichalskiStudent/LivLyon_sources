@@ -3,11 +3,12 @@
 namespace LIV\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * Place
  *
- * @ORM\Table(name="place")
+ * @ORM\Table(name="place",indexes={@Index(name="place_search_idx", columns={"slug"})})
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\PlaceRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -25,14 +26,14 @@ class Place
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
 

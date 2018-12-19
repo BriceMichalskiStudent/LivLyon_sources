@@ -11,6 +11,10 @@ class PlaceController extends Controller
         $em = $this->getDoctrine()->getManager();
         $place = $em->getRepository('LIVAppBundle:Place')->findOneFullBySlug($slugPlace);
 
+        if (!$place) {
+            throw $this->createNotFoundException('The place does not exist');
+        }
+
         return $this->render('@LIVApp/Place/single.html.twig', array(
             "place" => $place,
             "catSlug" => $slugCategory
