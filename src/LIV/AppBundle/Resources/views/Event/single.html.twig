@@ -1,5 +1,7 @@
 {% extends '@LIVApp/Default/layout.html.twig' %}
 
+{% block title %} {{ event.name }} - Présentation By Liv Lyon {% endblock %}
+
 {% block body %}
     <div class="container">
 
@@ -7,7 +9,7 @@
             <div class="card">
                 <div class="card-image carousel carousel-slider center">
                     {% for image in event.images %}
-                        <img src="{{ asset('img/event/' ~ image.imageName ) }}" alt="{{ image.alt }}" class="carousel-item">
+                        <img src="{{ asset('img/event/' ~ image.imageName ) }}" alt="{{ image.alt }}" class="carousel-item ">
                     {% endfor %}
                     <span class="card-title" style="font-weight: bold">{{ event.name }}</span>
                 </div>
@@ -25,7 +27,13 @@
                             <p class="col s12 m12" id="event_full_description">
                                 {{ event.fullDescription }}
                             </p>
+                            <p class="col s12 m12">
+                                {% for tag in event.tags %}
+                                    <a href="{{ path('liv_single_tag',{'tagName': tag.name }) }}" class="chip tag hoverable">{{ tag.name }}</a>
+                                {% endfor %}
+                            </p>
                         </div>
+
                         <div class="col s12 m3" style="text-align: center">
                             <p id="dates" style="text-align: center">
                                 <span style="font-weight: bold; font-size: 1.1em; color: red">DU<br></span>
@@ -38,8 +46,12 @@
                         </div>
                         <div class="col s12 m9">
                             <div class="collection" id="links">
-                                <a href="{{ event.linkTicketing }}" class="collection-item"><span class="badge">Organisateur</span>Voir l'organisateur</a>
-                                <a href="{{ event.linkOrganiser }}" class="collection-item"><span class="badge">Billets/Tickets</span>Réserver ma place</a>
+                                {% if event.linkOrganiser is not null %}
+                                    <a href="{{ event.linkOrganiser }}" target="_blank" class="collection-item"><span class="badge">Organisateur</span>Voir l'organisateur</a>
+                                {% endif %}
+                                {% if event.linkOrganiser is not null %}
+                                    <a href="{{ event.linkTicketing }}" target="_blank" class="collection-item"><span class="badge">Billets/Tickets</span>Réserver ma place</a>
+                                {% endif %}
                             </div>
                         </div>
 

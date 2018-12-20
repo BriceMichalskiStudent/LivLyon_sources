@@ -15,6 +15,10 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
         $queryBuilder = $this->createQueryBuilder('evt')
             ->where("evt.slug = :slug")
             ->setParameter('slug', $slug)
+            ->leftJoin('evt.images', 'mgs')
+            ->addSelect('mgs')
+            ->leftJoin('evt.tags', 'tgs')
+            ->addSelect('tgs')
         ;
 
         return $queryBuilder->getQuery()->getOneOrNullResult();

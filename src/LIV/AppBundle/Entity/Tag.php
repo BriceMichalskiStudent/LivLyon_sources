@@ -3,11 +3,12 @@
 namespace LIV\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * Tag
  *
- * @ORM\Table(name="tag")
+ * @ORM\Table(name="tag",indexes={@Index(name="tag_search_idx", columns={"name"})})
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\TagRepository")
  */
 class Tag
@@ -32,6 +33,12 @@ class Tag
      * @ORM\ManyToMany(targetEntity="Place", mappedBy="tags")
      */
     private $places;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Event", mappedBy="tags")
+     */
+    private $events;
     
     /**
      * Get id
@@ -106,5 +113,39 @@ class Tag
     public function getPlaces()
     {
         return $this->places;
+    }
+
+    /**
+     * Add event
+     *
+     * @param \LIV\AppBundle\Entity\Event $event
+     *
+     * @return Tag
+     */
+    public function addEvent(\LIV\AppBundle\Entity\Event $event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \LIV\AppBundle\Entity\Event $event
+     */
+    public function removeEvent(\LIV\AppBundle\Entity\Event $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }

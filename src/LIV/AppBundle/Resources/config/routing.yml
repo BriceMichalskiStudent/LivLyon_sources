@@ -14,3 +14,5 @@ liv_place_category:
 liv_event_category:
     resource: "@LIVAppBundle/Resources/config/routing-event-category.yml"
 
+liv_tag:
+    resource: "@LIVAppBundle/Resources/config/routing-tag.yml"

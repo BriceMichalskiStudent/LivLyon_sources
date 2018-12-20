@@ -3,11 +3,12 @@
 namespace LIV\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * EventCategory
  *
- * @ORM\Table(name="event_category")
+ * @ORM\Table(name="event_category",indexes={@Index(name="event_category_search_idx", columns={"slug"})})
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\EventCategoryRepository")
  * @ORM\HasLifecycleCallbacks()
  */

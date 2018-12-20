@@ -6,11 +6,11 @@
             <div class="col s12 m12">
                 {% for event in category.events %}
                     <div class="col s6 m4">
-                        <div class="card">
+                        <div class="card hoverable">
                             <div class="card-image">
                                 {% for image in event.images %}
                                     {% if loop.first %}
-                                        <img src="{{ asset('img/event/' ~ image.imageName ) }}" alt="{{ event.name }}">
+                                        <img class="responsive-img" src="{{ asset('img/event/' ~ image.imageName ) }}" alt="{{ event.name }}">
                                     {% endif %}
                                 {% endfor %}
                                 <span class="card-title">{{ event.name }}</span>

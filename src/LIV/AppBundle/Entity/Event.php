@@ -3,14 +3,13 @@
 namespace LIV\AppBundle\Entity;
 
 use DateTime;
-use DateTimeImmutable;
+use Doctrine\ORM\Mapping\Index;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Category;
 
 /**
  * Event
  *
- * @ORM\Table(name="event")
+ * @ORM\Table(name="event",indexes={@Index(name="event_search_idx", columns={"slug"})})
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\EventRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -35,14 +34,14 @@ class Event
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="startingDate", type="datetime", nullable=true)
+     * @ORM\Column(name="startingDate", type="datetime")
      */
     private $startingDate;
 
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="endingDate", type="datetime", nullable=true)
+     * @ORM\Column(name="endingDate", type="datetime")
      */
     private $endingDate;
 
@@ -126,6 +125,11 @@ class Event
      */
     private $latitude;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="events",cascade={"persist"})
+     * @ORM\JoinTable(name="event_tag")
+     */
+    private $tags;
 
     /**
      * @ORM\PrePersist
@@ -561,5 +565,39 @@ class Event
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \LIV\AppBundle\Entity\Tag $tag
+     *
+     * @return Event
+     */
+    public function addTag(\LIV\AppBundle\Entity\Tag $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \LIV\AppBundle\Entity\Tag $tag
+     */
+    public function removeTag(\LIV\AppBundle\Entity\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

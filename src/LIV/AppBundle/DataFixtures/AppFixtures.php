@@ -23,15 +23,27 @@ class AppFixtures extends Fixture
         $commonTag = new Tag();
         $commonTag->setName("common-tag");
         $manager->persist($commonTag);
-        // create 20 place! Bam!
-        for ($i = 0; $i < 20; $i++) {
+        #FIXTURES FOR EVENTS
+        $commonEventCategory = new EventCategory();
+        $commonEventCategory->setName("common");
+        $manager->persist($commonEventCategory);
+
+        for ($i = 0; $i < 10; $i++) {
+            //CREATE 10 TAGS
             $tag = new Tag();
             $tag->setName("tag-".$i);
+            $manager->persist($tag);
+            //CREATE 10 CATEGORIES OF PLACE
+            $categoriePlaces = new PlaceCategory();
+            $categoriePlaces->setName("my super category ".$i);
+            $manager->persist($categoriePlaces);
+            //CREATE 10 ADRESS
             $address = new Address();
             $address->setCity("lyon");
             $address->setZipCode("69003");
             $address->setStreet("avenue thiers");
             $address->setStreetNumber($i);
+            //CREATE 10 PLACES
             $place = new Place();
             $place->setAddress($address);
             $place->setName("place-".$i);
@@ -44,11 +56,10 @@ class AppFixtures extends Fixture
             $place->setLink("https://www.hopperlyon.com");
             $place->addTag($commonTag);
             $place->addTag($tag);
-            $categoriePlaces = new PlaceCategory();
-            $categoriePlaces->setName("my super category ".$i);
-            $manager->persist($categoriePlaces);
+            // ADD PLACES TO CATEGORIES
             $place->addCategory($commonCategory);
             $place->addCategory($categoriePlaces);
+            //ADD IMAGES
             $image = new PlaceImage();
             $image->setImageName("demo.jpg");
             $image->setAlt($place->getName());
@@ -59,55 +70,38 @@ class AppFixtures extends Fixture
             $image2->setPlace($place);
             $place->addImage($image);
             $place->addImage($image2);
-            $manager->persist($tag);
             $manager->persist($place);
-        }
-
-        #FIXTURES FOR EVENTS
-        $commonCategory = new EventCategory();
-        $commonCategory->setName("common");
-        $manager->persist($commonCategory);
-
-        for ($i = 0; $i < 10; $i++) {
-
+            // EVENT FIXTURES
             //CREATE 10 CATEGORIES OF EVENTS
-            $category = new EventCategory();
-            $category->setName("eventCategory-" . $i);
-            $manager->persist($category);
-
-
+            $eventCategory = new EventCategory();
+            $eventCategory->setName("eventCategory-" . $i);
+            $manager->persist($eventCategory);
             //CREATE 10 EVENTS
             $event = new Event();
             $event->setName("event-" . $i);
             $event->setStartingDate(new \DateTime('now'));
             $event->setEndingDate(new \DateTime('tomorrow'));
             $event->setShortDescription("Short description of this amazing event, let's go guys");
-            $event->setFullDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Quisque rhoncus turpis ac lacus interdum porta. Proin aliquet accumsan purus, sed consectetur nisi 
-            vestibulum at. Praesent non dictum ipsum. Nunc fermentum velit ligula, non volutpat nisi fermentum ut. 
-            Sed sollicitudin ante ut diam ornare congue. Aenean efficitur arcu metus, a malesuada urna tincidunt eget. 
-            Integer commodo ante vitae metus egestas, sit amet sollicitudin sapien egestas. Cras vehicula elit id 
-            orci bibendum, euismod hendrerit velit semper.");
-            $event->setLinkOrganiser("#!");
-            $event->setLinkTicketing("#!");
-            $event->addCategory($commonCategory);
-            $event->addCategory($category);
+            $event->setFullDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit.Quisque rhoncus turpis ac lacus interdum porta. Proin aliquet accumsan purus, sed consectetur nisi vestibulum at. Praesent non dictum ipsum. Nunc fermentum velit ligula, non volutpat nisi fermentum ut. Sed sollicitudin ante ut diam ornare congue. Aenean efficitur arcu metus, a malesuada urna tincidunt eget. Integer commodo ante vitae metus egestas, sit amet sollicitudin sapien egestas. Cras vehicula elit id orci bibendum, euismod hendrerit velit semper.");
+            $event->setLinkOrganiser("https://www.accorhotelsarena.com/fr/evenements-a-paris/toute-la-programmation");
+            $event->setLinkTicketing("https://www.digitick.com/tr/event/post-malone/accorhotels-arena/5800855");
+            $event->addCategory($commonEventCategory);
+            $event->addCategory($eventCategory);
             $event->setLatitude(45.7788368);
             $event->setLongitude(4.872813299999962);
-
-            $image = new EventImage();
-            $image->setImageName('demo-event1.jpg');
-            $image->setAlt($event->getName());
-            $image->setEvent($event);
-
-            $image1 = new EventImage();
-            $image1->setImageName('demo-event2.jpg');
-            $image1->setAlt($event->getName());
-            $image1->setEvent($event);
-
-            $event->addImage($image);
-            $event->addImage($image1);
-
+            $event->addTag($commonTag);
+            $event->addTag($tag);
+            // ADD IMAGES TO EVENT
+            $eventImage1 = new EventImage();
+            $eventImage1->setImageName('demo-event1.jpg');
+            $eventImage1->setAlt($event->getName());
+            $eventImage1->setEvent($event);
+            $event->addImage($eventImage1);
+            $eventImage2 = new EventImage();
+            $eventImage2->setImageName('demo-event2.jpg');
+            $eventImage2->setAlt($event->getName());
+            $eventImage2->setEvent($event);
+            $event->addImage($eventImage2);
             $manager->persist($event);
         }
         $manager->flush();
