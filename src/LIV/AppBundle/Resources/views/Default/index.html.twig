@@ -10,48 +10,45 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
-                <h1 id="parallax1-title" class="header center white-text text-lighten-2">Welcome to Lyon</h1>
                 <div class="row center">
                     <h5 class="header white-text col s12 light"></h5>
                 </div>
-                <div class="row center">
-                    <a href="#" id="download-button" class="btn-large waves-effect waves-red blue darken-4 lighten-1 ">Que faire ?</a>
+                <div id="btnEventList" class="row center">
+                    <a href="#" id="download-button" class="btn-large waves-effect waves-red blue darken-4 lighten-1">Que faire ?</a>
                 </div>
                 <br><br>
             </div>
         </div>
-        <div class="parallax"><img src="{{ asset('img/background1.jpg') }}" alt="Unsplashed background img 1"></div>
+        <div class="parallax">
+            <img width="100%" src="{{ asset('img/background1.jpg') }}" alt="banner">
+        </div>
     </div>
 
     <!-- PRESENTATION TEXT -->
     <div class="container">
         <div class="section">
-
             <!--   Icon Section   -->
             <div class="row">
                 <div class="col s12 m4">
                     <div class="icon-block">
                         <h4 class="center brown-text"><i class="material-icons">flash_on</i></h4>
-                        <h5 class="center">Blabla sur la magnifique ville de lyon</h5>
+                        <h5 class="center">Nous</h5>
+                        <p class="light">L’équipe de Liv’Lyon te partage toutes ses bonnes adresses pour découvrir et apprécier la ville! Que tu sois de passage, en quête de nouveaux lieux pour changer tes habitudes ou encore à la recherche des merveilles de la ville tu es au bon endroit.
 
-                        <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                            Alors pour te sortir de ton lit et vivre Lyon ça commence ici ! </p>
                     </div>
                 </div>
-
                 <div class="col s12 m4">
                     <div class="icon-block">
                         <h4 class="center brown-text"><i class="material-icons">group</i></h4>
-                        <h5 class="center">Blabla sur le but de notre tavail acharnée</h5>
-
+                        <h5 class="center">Vous</h5>
                         <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
                     </div>
                 </div>
-
                 <div class="col s12 m4">
                     <div class="icon-block">
                         <h4 class="center brown-text"><i class="material-icons">settings</i></h4>
-                        <h5 class="center">Blabla sur ce qu'on veux</h5>
-
+                        <h5 class="center">Le concept</h5>
                         <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
                     </div>
                 </div>
@@ -106,12 +103,12 @@
     <br>
     <!-- Carroussel -->
 
-    <div class="carousel carousel-slider center">
-        <img src="/img/carousel-1.jpg" class="carousel-item">
-        <img src="/img/carousel-2.jpg" class="carousel-item">
-        <img src="/img/carousel-3.jpg" class="carousel-item">
-        <img src="/img/carousel-4.jpg" class="carousel-item">
-        <img src="/img/carousel-5.jpg" class="carousel-item">
+    <div style="height: 25em" class="carousel carousel-slider center">
+        <img src="{{ asset('img/carousel-1.jpg') }}" height="100%" class="carousel-item">
+        <img src="{{ asset('img/carousel-2.jpg') }}" height="100%" class="carousel-item">
+        <img src="{{ asset('img/carousel-3.jpg') }}" height="100%" class="carousel-item">
+        <img src="{{ asset('img/carousel-4.jpg') }}" height="100%" class="carousel-item">
+
     </div>
 {% endblock %}
 
