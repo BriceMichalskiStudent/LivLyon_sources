@@ -8,7 +8,6 @@
 
 namespace LIV\AppBundle\Entity;
 
-
 class Contact
 {
     private $id;
@@ -130,6 +129,4 @@ class Contact
     {
         $this->submit = $submit;
     }
-
-
 }

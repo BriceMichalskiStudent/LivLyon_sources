@@ -20,7 +20,7 @@ class ContactController extends Controller
         $contact = new Contact();
         $form = $this->get('form.factory')->create(ContactType::class, $contact);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
             //create mail
             $mailUser = $this->container->getParameter('mail_user');
