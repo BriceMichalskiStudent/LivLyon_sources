@@ -4,7 +4,7 @@ namespace LIV\UserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class OCUserBundle extends Bundle
+class LIVUserBundle extends Bundle
 {
     public function getParent()
     {
