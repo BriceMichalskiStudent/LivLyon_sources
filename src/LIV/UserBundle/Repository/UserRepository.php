@@ -8,8 +8,6 @@
 
 namespace LIV\UserBundle\Repository;
 
-
 class UserRepository
 {
-
 }

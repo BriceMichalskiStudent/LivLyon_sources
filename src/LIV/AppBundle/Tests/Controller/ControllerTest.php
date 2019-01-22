@@ -28,20 +28,17 @@ class ControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/places/common/place-0');
-        $response = $client->getResponse();
 
-        $this->assertEquals("200", $response->getStatusCode());
-        $this->assertContains("place-0", $response->getContent());
+        $this->assertEquals("200", $client->getResponse()->getStatusCode());
+        $this->assertContains("place-0", $client->getResponse()->getContent());
     }
-
 
     public function testShowEventsCategoryContent()
     {
         $client = static::createClient();
         $client->request('GET', '/events/common');
-        $response = $client->getResponse();
 
-        $this->assertEquals("200", $response->getStatusCode());
+        $this->assertEquals("200",  $client->getResponse()->getStatusCode());
     }
 
     public function testShowSingleEvent()

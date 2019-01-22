@@ -6,12 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testShowSingleEvent()
     {
         $client = static::createClient();
+        $client->request('GET', '/user/login');
 
-        $crawler = $client->request('GET', '/');
-
-        $this->assertContains('Hello World', $client->getResponse()->getContent());
+        $this->assertEquals("200", $client->getResponse()->getStatusCode());
     }
 }
