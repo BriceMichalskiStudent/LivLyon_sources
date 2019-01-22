@@ -3,6 +3,5 @@ liv_app:
     prefix:   /
 
 liv_user:
-    resource: "@LIVUserBundle/Controller/"
-    type:     annotation
+    resource: "@LIVUserBundle/Resources/config/routing.yml"
     prefix:   /user
