@@ -38,7 +38,7 @@ class ControllerTest extends WebTestCase
         $client = static::createClient();
         $client->request('GET', '/events/common');
 
-        $this->assertEquals("200",  $client->getResponse()->getStatusCode());
+        $this->assertEquals("200", $client->getResponse()->getStatusCode());
     }
 
     public function testShowSingleEvent()
