@@ -11,7 +11,6 @@ use LIV\AppBundle\Entity\Place;
 use LIV\AppBundle\Entity\PlaceCategory;
 use LIV\AppBundle\Entity\PlaceImage;
 use LIV\AppBundle\Entity\Tag;
-use Symfony\Component\DomCrawler\Image;
 
 class AppFixtures extends Fixture
 {
