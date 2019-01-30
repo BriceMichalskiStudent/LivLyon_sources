@@ -23,9 +23,4 @@ class DefaultControllerTest extends WebTestCase
         $this->assertEquals('foo@bar.baz', $user->getEmail());
         $this->assertEquals('bar', $user->getPassword());
     }
-
-    public function testLogin()
-    {
-        
-    }
 }
