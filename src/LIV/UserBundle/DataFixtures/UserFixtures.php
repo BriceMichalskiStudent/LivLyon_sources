@@ -12,9 +12,9 @@ class UserFixtures extends Fixture
     {
         $userAdmin = new User();
 
-        $userAdmin->setUsername("admin");
+        $userAdmin->setUsername("foo");
         $userAdmin->setEmail("foo@bar.baz");
-        $userAdmin->setPassword("adminpass");
+        $userAdmin->setPassword("bar");
 
         $manager->persist($userAdmin);
         $manager->flush();
