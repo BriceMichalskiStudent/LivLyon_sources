@@ -5,6 +5,10 @@ security:
     encoders:
         LIV\UserBundle\Entity\User: sha512
 
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         main:
@@ -28,3 +32,7 @@ security:
                 target:     fos_user_security_login
             remember_me:
                 secret:     %secret%
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }

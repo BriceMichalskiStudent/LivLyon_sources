@@ -3,7 +3,7 @@
 namespace LIV\UserBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class DefaultControllerTest extends WebTestCase
 {
@@ -14,13 +14,5 @@ class DefaultControllerTest extends WebTestCase
 
         $this->assertEquals("200", $client->getResponse()->getStatusCode());
     }
-
-    public function testUser(EntityManager $manager)
-    {
-        $user = $manager->getRepository('LIVUserBundle:User')->find(1);
-
-        $this->assertEquals('foo', $user->getUsername());
-        $this->assertEquals('foo@bar.baz', $user->getEmail());
-        $this->assertEquals('bar', $user->getPassword());
-    }
+    
 }
