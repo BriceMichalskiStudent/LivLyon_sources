@@ -1,0 +1,36 @@
+#loginbox{
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+    width: 20em;
+}
+#loginbox .btn-success{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+#resetbox{
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+    width: 20em;
+}
+#resetbox .btn-success{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+#fos_user_content{
+    margin-top: 5em;
+    margin-bottom: 10em;
+}
+blockquote{
+    border-color: #064191;
+}
+.card-panel{
+    background-color: #064191 ;
+}
+.errorToast{
+    color: red;
+    font-weight: bold;
+}

@@ -1,3 +1,7 @@
 liv_app:
     resource: "@LIVAppBundle/Resources/config/routing.yml"
     prefix:   /
+
+liv_user:
+    resource: "@LIVUserBundle/Resources/config/routing.yml"
+    prefix:   /user
