@@ -119,12 +119,11 @@ class Place
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity="LIV\AppBundle\Entity\PlaceImage", mappedBy="place", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="LIV\AppBundle\Entity\PlaceImage", mappedBy="place", cascade={"persist"})
      */
     private $images;
 
     // METHOD
-
     /**
      * @ORM\PrePersist
      */
@@ -133,6 +132,10 @@ class Place
         $this->createdAt = new \DateTime("now");
         $this->setUpdatedAtValue();
         $this->slug = str_replace(' ', '-', $this->name);
+        foreach ($this->images as $image)
+        {
+            $image->setPlace($this);
+        }
     }
 
     /**
@@ -141,7 +144,12 @@ class Place
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTime("now");
+        foreach ($this->images as  $image)
+        {
+           $image->setPlace($this);
+        }
     }
+
     /**
      * Constructor
      */
@@ -150,8 +158,13 @@ class Place
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    // GETTER AND SETTER
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
+
+    // GETTER AND SETTER
     /**
      * Get id
      *

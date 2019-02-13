@@ -14,8 +14,12 @@ class PlaceImageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('imageFile', VichImageType::class);
-    }/**
+        $builder
+            ->add('name')
+            ->add('imageFile', VichImageType::class);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -32,6 +36,5 @@ class PlaceImageType extends AbstractType
     {
         return 'liv_appbundle_placeimage';
     }
-
 
 }

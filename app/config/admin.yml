@@ -9,7 +9,6 @@ easy_admin:
       - Tags
     form_theme:
       - '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig'
-      - 'VichUploaderBundle:Form:fields.html.twig'
 
   formats:
     date:     'd/m/Y'
@@ -51,8 +50,7 @@ easy_admin:
         - { property: 'categories', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\PlaceCategory' } }
         - { property: 'tags', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\Tag' } }
         - { type: 'tab', label: 'Images' }
-        - { property: 'images', type: 'collection', type_options: {entry_type: 'LIV\AppBundle\Form\PlaceImageType',allow_delete: true, allow_add: true, by_reference: false} }
-
+        - { property: 'images', type: 'entity', type_options: {class: 'LIV\AppBundle\Entity\PlaceImage',multiple: true,by_reference: false} }
 
     Place_image:
       class: LIV\AppBundle\Entity\PlaceImage
@@ -60,6 +58,8 @@ easy_admin:
       form:
         fields:
           - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
+          - { property: 'image'}
+          - { property: 'place', type: 'entity'}
       list:
         fields:
           - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.place_images%' }
@@ -68,7 +68,7 @@ easy_admin:
       class: LIV\AppBundle\Entity\Tag
       form:
         fields:
-        - { property: 'name', label: 'Nom du Tags' }
+        - { property: 'name', label: 'Nom du Tags', type_options: { class: 'LIV\AppBundle\Entity\Place' } }
 
     Addresses:
       class: LIV\AppBundle\Entity\Address

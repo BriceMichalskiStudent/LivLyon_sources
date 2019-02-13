@@ -64,6 +64,14 @@ class PlaceImage
         }
     }
 
+    // file manipulation
+    public function upload($imageFile,$name)
+    {
+        $name= uniqid('PLACE').str_replace(' ', '-', $name);
+        $this->imageFile->move('%app.path.place_images%', $name);
+        $this->image = $name;
+    }
+
     public function getImageFile()
     {
         return $this->imageFile;
@@ -119,5 +127,8 @@ class PlaceImage
         $this->updatedAt = $updatedAt;
     }
 
-
+    public function __toString()
+    {
+        return $this->image;
+    }
 }
