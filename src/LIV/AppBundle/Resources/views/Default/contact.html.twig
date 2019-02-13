@@ -5,53 +5,9 @@
         <div class="row">
             <div class="col m10 offset-m1 s12">
                 <h2 class="center-align">Contactez-nous</h2>
-                <div class="row">
-                    <form id ="contact-form" class="col s12">
-                        <div class="row">
-                            <div class="input-field col m6 s12">
-                                <input id="first_name" type="text" class="validate" required>
-                                <label for="last_name">Nom</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col m6 s12">
-                                <input id="first_name" type="text" class="validate" required>
-                                <label for="first_name">Prénom</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col m6 s12">
-                                <input id="company" type="text" class="validate">
-                                <label for="company">Entreprise (facultatif)</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col m6 s12">
-                                <input id="email" type="email" class="validate" required>
-                                <label for="email">Email</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col m6 s12">
-                                <input id="object" type="text" class="validate" required>
-                                <label for="object">Sujet</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea id="message" class="materialize-textarea" required></textarea>
-                                <label for="message">Message</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col m12">
-                                <p class="right-align">
-                                    <input class="btn btn-large waves-effect waves-light" style="color: white" type="submit" value="Envoyer">
-                                </p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                {{  form_start(form) }}
+
+                {{ form_end(form) }}
             </div>
         </div>
     </div>

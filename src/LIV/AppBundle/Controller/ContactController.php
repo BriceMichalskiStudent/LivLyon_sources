@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ContactController extends Controller
 {
-    public function indexAction(Request $request)
+    public function contactAction(Request $request)
     {
         $contact = new Contact();
         $form = $this->get('form.factory')->create(ContactType::class, $contact);
@@ -23,7 +23,7 @@ class ContactController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
             //create mail
-            $mailUser = $this->container->getParameter('mail_user');
+            $mailUser = $this->container->getParameter('mailer_user');
             //construct mail
             $notifAdmin = \Swift_Message::newInstance()
                 ->setSubject($contact->getObject())
@@ -38,6 +38,7 @@ class ContactController extends Controller
                             'firstname' => $contact->getFirstname(),
                             'name' => $contact->getName(),
                             'email' => $contact->getEmail(),
+                            'object' => $contact->getObject(),
                             'content' =>$contact->getMessage(),
                         )
                     )
