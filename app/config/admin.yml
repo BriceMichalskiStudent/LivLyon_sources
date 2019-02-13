@@ -1,0 +1,86 @@
+easy_admin:
+  site_name: "ADMINISTRATION - LIV Lyon"
+  design:
+    color_scheme: 'light'
+    menu:
+      - Lieux
+      - Place_image
+      - Lieux_categorie
+      - Tags
+    form_theme:
+      - '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig'
+      - 'VichUploaderBundle:Form:fields.html.twig'
+
+  formats:
+    date:     'd/m/Y'
+    time:     'H:i'
+    datetime: 'd/m/Y H:i:s'
+
+  entities:
+    Lieux_categorie:
+      class: LIV\AppBundle\Entity\PlaceCategory
+      label: 'Categories de Lieux'
+
+    Lieux:
+      class: LIV\AppBundle\Entity\Place
+      label: 'Lieux'
+      list:
+        fields:
+        - { property: 'name', label: 'Etablissement' }
+        - { property: 'rating', label: 'Note' }
+        - { property: 'address.streetNumber', label: 'N°' }
+        - { property: 'address.street', label: 'Rue' }
+        - { property: 'address.zipCode', label: 'Code Postal' }
+        - { property: 'address.city', label: 'Ville' }
+        - { property: 'updatedAt', label: 'Mis à jour le' }
+
+      form:
+        fields:
+        - { type: 'tab', label: 'Information de base' }
+        - { property: 'name', label: "Nom de l'etablissement" }
+        - { property: 'rating',type: 'choice', type_options: {choices: {'1':'1','2':'2' ,'3':'3','4':'4' ,'5':'5'}}, label: 'Note' }
+        - { property: 'information',label: "information d'ouverture" }
+        - { type: 'tab', label: 'Redaction' }
+        - { property: 'shortDescription' , label: "Phrase d'accroche" }
+        - { property: 'fullDescription' , label: "Article" }
+        - { type: 'tab', label: 'Localisation' }
+        - { property: 'address',type: 'LIV\AppBundle\Form\AddressType', label: 'Adresse' }
+        - { property: 'longitude'}
+        - { property: 'latitude'}
+        - { type: 'tab', label: 'Classification' }
+        - { property: 'categories', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\PlaceCategory' } }
+        - { property: 'tags', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\Tag' } }
+        - { type: 'tab', label: 'Images' }
+        - { property: 'images', type: 'collection', type_options: {entry_type: 'LIV\AppBundle\Form\PlaceImageType',allow_delete: true, allow_add: true, by_reference: false} }
+
+
+    Place_image:
+      class: LIV\AppBundle\Entity\PlaceImage
+      label: 'Photos de Lieux'
+      form:
+        fields:
+          - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
+      list:
+        fields:
+          - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.place_images%' }
+
+    Tags:
+      class: LIV\AppBundle\Entity\Tag
+      form:
+        fields:
+        - { property: 'name', label: 'Nom du Tags' }
+
+    Addresses:
+      class: LIV\AppBundle\Entity\Address
+      list:
+        fields:
+        - { property: 'streetNumber', label: 'N°' }
+        - { property: 'street', label: 'Rue' }
+        - { property: 'city', label: 'Ville' }
+        - { property: 'zipCode', label: 'Code Postal' }
+      form:
+        fields:
+        - { property: 'streetNumber', label: 'N°' }
+        - { property: 'street', label: 'Rue' }
+        - { property: 'city', label: 'Ville' }
+        - { property: 'zipCode', label: 'Code Postal' }

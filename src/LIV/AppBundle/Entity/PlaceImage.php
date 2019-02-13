@@ -3,12 +3,15 @@
 namespace LIV\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * PlaceImage
- *
+ * @Vich\Uploadable
  * @ORM\Table(name="place_image")
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\PlaceImageRepository")
+ *
  */
 class PlaceImage
 {
@@ -22,142 +25,99 @@ class PlaceImage
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
      * @var string
-     *
-     * @ORM\Column(name="imageName", type="string", length=255)
      */
-    private $imageName;
+    private $image;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255)
+     * @Vich\UploadableField(mapping="place_images", fileNameProperty="image")
+     * @var File
      */
-    private $alt;
+    private $imageFile;
 
     /**
      * @var Place
      *
      * @ORM\ManyToOne(targetEntity="LIV\AppBundle\Entity\Place", inversedBy="images")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $place;
 
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
 
-    private $file;
+    // ...
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
 
     /**
-     * Get id
-     *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * Set imageName
-     *
-     * @param string $imageName
-     *
-     * @return placeImage
+     * @return Place
      */
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * Get imageName
-     *
-     * @return string
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return placeImage
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    public function setFile($file)
-    {
-        $this->file = $file;
-    }
-
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    // file manipulation
-    public function upload()
-    {
-        $originalName= $this->file->getClientOriginalName();
-        $name= uniqid('PLACE').str_replace(' ', '-', $originalName);
-
-        $this->file->move($this->getUploadRootDir(), $name);
-
-        $this->imageName = $name;
-        $this->alt = $name;
-    }
-
-    public function getUploadDir()
-    {
-        return 'img/place';
-    }
-
-    protected function getUploadRootDir()
-    {
-        // On retourne le chemin relatif vers l'image pour notre code PHP
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    /**
-     * Set place
-     *
-     * @param \LIV\AppBundle\Entity\Place $place
-     *
-     * @return PlaceImage
-     */
-    public function setPlace(\LIV\AppBundle\Entity\Place $place)
-    {
-        $this->place = $place;
-
-        return $this;
-    }
-
-    /**
-     * Get place
-     *
-     * @return \LIV\AppBundle\Entity\Place
-     */
-    public function getPlace()
+    public function getPlace(): Place
     {
         return $this->place;
     }
+
+    /**
+     * @param Place $place
+     */
+    public function setPlace(Place $place)
+    {
+        $this->place = $place;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+
 }

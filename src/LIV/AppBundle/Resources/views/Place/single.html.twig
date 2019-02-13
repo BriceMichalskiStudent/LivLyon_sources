@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-image carousel carousel-slider center">
                 {% for image in place.images %}
-                        <img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ image.alt }}" class="carousel-item">
+                        <img src="{{ asset('img/place/' ~ image.image ) }}" alt="{{ image.image }}" class="carousel-item">
                 {% endfor %}
                 <span class="card-title" style="font-weight: bold">{{ place.name }}</span>
             </div>

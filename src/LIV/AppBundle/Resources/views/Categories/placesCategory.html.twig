@@ -13,7 +13,7 @@
                             <div class="card-image">
                                 {% for image in place.images %}
                                     {% if loop.first %}
-                                        <img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ place.name }}">
+                                        <img src="{{ asset('img/place/' ~ image.image ) }}" alt="{{ place.name }}">
                                     {% endif %}
                                 {% endfor %}
                                 <span class="card-title">{{ place.name }}</span>

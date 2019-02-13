@@ -33,6 +33,6 @@ security:
             remember_me:
                 secret:     %secret%
 
-    access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+#    access_control:
+#        - { path: ^/admin, roles: ROLE_ADMIN }
+#        - { path: ^/admin, roles: ROLE_ADMIN }

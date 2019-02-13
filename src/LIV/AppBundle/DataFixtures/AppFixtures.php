@@ -60,12 +60,12 @@ class AppFixtures extends Fixture
             $place->addCategory($categoriePlaces);
             //ADD IMAGES
             $image = new PlaceImage();
-            $image->setImageName("demo.jpg");
-            $image->setAlt($place->getName());
+            $image->setImage("demo.jpg");
+            $image->setUpdatedAt(new \DateTime('now'));
             $image->setPlace($place);
             $image2 = new PlaceImage();
-            $image2->setImageName("demo2.jpg");
-            $image2->setAlt($place->getName());
+            $image2->setImage("demo2.jpg");
+            $image2->setUpdatedAt(new \DateTime('now'));
             $image2->setPlace($place);
             $place->addImage($image);
             $place->addImage($image2);
