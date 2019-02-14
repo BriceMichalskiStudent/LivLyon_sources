@@ -40,7 +40,7 @@ class Place
     /**
      * @var string
      *
-     * @ORM\Column(name="link",type="string")
+     * @ORM\Column(name="link",type="string", nullable=true)
      */
     private $link;
 
@@ -132,10 +132,6 @@ class Place
         $this->createdAt = new \DateTime("now");
         $this->setUpdatedAtValue();
         $this->slug = str_replace(' ', '-', $this->name);
-        foreach ($this->images as $image)
-        {
-            $image->setPlace($this);
-        }
     }
 
     /**
@@ -144,10 +140,6 @@ class Place
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTime("now");
-        foreach ($this->images as  $image)
-        {
-           $image->setPlace($this);
-        }
     }
 
     /**

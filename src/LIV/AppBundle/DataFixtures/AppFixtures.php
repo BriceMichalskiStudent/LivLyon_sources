@@ -90,16 +90,17 @@ class AppFixtures extends Fixture
             $event->setLongitude(4.872813299999962);
             $event->addTag($commonTag);
             $event->addTag($tag);
+            $event->setAddress($address);
             // ADD IMAGES TO EVENT
             $eventImage1 = new EventImage();
-            $eventImage1->setImageName('demo-event1.jpg');
-            $eventImage1->setAlt($event->getName());
+            $eventImage1->setImage('demo-event1.jpg');
             $eventImage1->setEvent($event);
+            $eventImage1->setUpdatedAt(new \DateTime('now'));
             $event->addImage($eventImage1);
             $eventImage2 = new EventImage();
-            $eventImage2->setImageName('demo-event2.jpg');
-            $eventImage2->setAlt($event->getName());
+            $eventImage2->setImage('demo-event2.jpg');
             $eventImage2->setEvent($event);
+            $eventImage2->setUpdatedAt(new \DateTime('now'));
             $event->addImage($eventImage2);
             $manager->persist($event);
         }

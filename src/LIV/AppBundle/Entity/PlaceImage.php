@@ -90,7 +90,7 @@ class PlaceImage
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -98,7 +98,7 @@ class PlaceImage
     /**
      * @return Place
      */
-    public function getPlace(): Place
+    public function getPlace()
     {
         return $this->place;
     }
