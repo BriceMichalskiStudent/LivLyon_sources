@@ -65,7 +65,7 @@ class PlaceImage
     }
 
     // file manipulation
-    public function upload($imageFile,$name)
+    public function upload($imageFile, $name)
     {
         $name= uniqid('PLACE').str_replace(' ', '-', $name);
         $this->imageFile->move('%app.path.place_images%', $name);

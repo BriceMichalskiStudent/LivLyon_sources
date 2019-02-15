@@ -31,6 +31,4 @@ class PlaceCategoryType extends AbstractType
     {
         return 'liv_appbundle_placecategory';
     }
-
-
 }

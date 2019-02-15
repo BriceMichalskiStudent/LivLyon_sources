@@ -36,5 +36,4 @@ class PlaceImageType extends AbstractType
     {
         return 'liv_appbundle_placeimage';
     }
-
 }

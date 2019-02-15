@@ -31,6 +31,4 @@ class AddressType extends AbstractType
     {
         return 'liv_appbundle_address';
     }
-
-
 }
