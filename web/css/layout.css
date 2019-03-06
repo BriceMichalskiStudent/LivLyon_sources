@@ -1,19 +1,15 @@
-html {
-    font-family: 'Roboto';
-}
-
 .nav-wrapper{
-    background-color: #60539A;
+    background-color: #064191;
 }
 .dropdown-content li a{
-    color: #60539A;
+    color: #064191;
 }
 
 .parallax1-title{
     color: white;
 }
 .page-footer{
-    background-color: #60539A;
+    background-color: #064191;
 }
 #mapid {
     height: 480px;

@@ -1,0 +1,151 @@
+easy_admin:
+  site_name: "ADMINISTRATION LIV Lyon"
+  design:
+    color_scheme: 'light'
+    menu:
+      - { label: 'Gestion des Fiches Détaillées' }
+      - { entity: 'Lieux', icon: 'map-pin' }
+      - { entity: 'Evenement', icon: 'calendar' }
+      - { label: 'Gestion des Photos ' }
+      - { entity: 'Place_image', icon: 'image' }
+      - { entity: 'Event_image', icon: 'image' }
+      - { label: 'Gestion des Categories ' }
+      - { entity: 'Lieux_categorie', icon: 'bars' }
+      - { entity: 'Evenement_categorie', icon: 'bars' }
+      - { label: 'Autres' }
+      - { entity: 'Tags', icon: 'tags' }
+    form_theme:
+      - '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig'
+    assets:
+      favicon: '/favicon.png'
+
+  formats:
+    date:     'd/m/Y'
+    time:     'H:i'
+    datetime: 'd/m/Y H:i:s'
+
+  entities:
+    Lieux:
+      class: LIV\AppBundle\Entity\Place
+      label: 'Lieux'
+      list:
+        fields:
+        - { property: 'name', label: 'Etablissement' }
+        - { property: 'rating', label: 'Note' }
+        - { property: 'address.streetNumber', label: 'N°' }
+        - { property: 'address.street', label: 'Rue' }
+        - { property: 'address.zipCode', label: 'Code Postal' }
+        - { property: 'address.city', label: 'Ville' }
+        - { property: 'updatedAt', label: 'Mis à jour le' }
+
+      form:
+        fields:
+        - { type: 'tab', label: 'Information de base' }
+        - { property: 'name', label: "Nom de l'etablissement" }
+        - { property: 'link',type: 'url', label: 'site internet'}
+        - { property: 'rating',type: 'choice', type_options: {choices: {'1':'1','2':'2' ,'3':'3','4':'4' ,'5':'5'}}, label: 'Note' }
+        - { property: 'information',label: "information d'ouverture" }
+        - { type: 'tab', label: 'Redaction' }
+        - { property: 'shortDescription' , label: "Phrase d'accroche" }
+        - { property: 'fullDescription' , label: "Article" }
+        - { type: 'tab', label: 'Localisation' }
+        - { property: 'address',type: 'LIV\AppBundle\Form\AddressType', label: 'Adresse' }
+        - { property: 'longitude'}
+        - { property: 'latitude'}
+        - { type: 'tab', label: 'Classification' }
+        - { property: 'categories', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\PlaceCategory' } }
+        - { property: 'tags', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\Tag' } }
+        - { type: 'tab', label: 'Images' }
+        - { property: 'images', type: 'entity', type_options: {class: 'LIV\AppBundle\Entity\PlaceImage',multiple: true,by_reference: false} }
+
+    Place_image:
+      class: LIV\AppBundle\Entity\PlaceImage
+      label: 'Photos de Lieux'
+      form:
+        fields:
+          - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
+          - { property: 'place', type: 'entity'}
+      list:
+        fields:
+          - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.place_images%' }
+          - { property: 'place.name', label: 'Lieu lié' }
+
+    Lieux_categorie:
+      class: LIV\AppBundle\Entity\PlaceCategory
+      label: 'Categories de Lieux'
+      form:
+        fields:
+          - { property: 'name'}
+
+    Tags:
+      class: LIV\AppBundle\Entity\Tag
+      form:
+        fields:
+        - { property: 'name', label: 'Nom du Tags'}
+
+    Addresses:
+      class: LIV\AppBundle\Entity\Address
+      list:
+        fields:
+        - { property: 'streetNumber', label: 'N°' }
+        - { property: 'street', label: 'Rue' }
+        - { property: 'city', label: 'Ville' }
+        - { property: 'zipCode', label: 'Code Postal' }
+      form:
+        fields:
+        - { property: 'streetNumber', label: 'N°' }
+        - { property: 'street', label: 'Rue' }
+        - { property: 'city', label: 'Ville' }
+        - { property: 'zipCode', label: 'Code Postal' }
+
+    Evenement:
+      class: LIV\AppBundle\Entity\Event
+      label: 'Evenement'
+      list:
+        fields:
+        - { property: 'Name', label: 'Nom' }
+        - { property: 'startingDate', label: 'Commence le' }
+        - { property: 'endingDate', label: 'Finis le' }
+        - { property: 'address.streetNumber', label: 'N°' }
+        - { property: 'address.street', label: 'Rue' }
+        - { property: 'address.zipCode', label: 'Code Postal' }
+        - { property: 'address.city', label: 'ville' }
+        - { property: 'updatedAt', label: 'Mise à jour le' }
+      form:
+        fields:
+        - { type: 'tab', label: 'Information de base' }
+        - { property: 'Name', label: 'Nom' }
+        - { property: 'startingDate', label: 'Commence le' }
+        - { property: 'endingDate', label: 'Finis le' }
+        - { type: 'tab', label: 'Redaction' }
+        - { property: 'shortDescription' , label: "Phrase d'accroche" }
+        - { property: 'fullDescription' , label: "Article" }
+        - { type: 'tab', label: 'Lieu'}
+        - { property: 'address',type: 'LIV\AppBundle\Form\AddressType', label: 'Adresse' }
+        - { property: 'longitude'}
+        - { property: 'latitude'}
+        - { type: 'tab', label: 'Classification' }
+        - { property: 'categories', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\EventCategory' } }
+        - { property: 'tags', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\Tag' }}
+        - { type: 'tab', label: 'Liens organisation' }
+        - { property: 'linkTicketing',type: 'url', label: 'Billetterie'}
+        - { property: 'linkOrganiser', type: 'url', label: 'Organisateur'}
+
+    Event_image:
+      class: LIV\AppBundle\Entity\EventImage
+      label: "Photos d'evenement"
+      form:
+        fields:
+          - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
+          - { property: 'event', type: 'entity'}
+      list:
+        fields:
+          - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.event_images%' }
+          - { property: 'event.name', label: 'Evenement lié' }
+
+    Evenement_categorie:
+      class: LIV\AppBundle\Entity\EventCategory
+      label: "Categories d'evenement"
+      form:
+        fields:
+          - { property: 'name'}

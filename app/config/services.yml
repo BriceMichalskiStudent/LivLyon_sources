@@ -17,3 +17,7 @@ services:
     LIV\AppBundle\DataFixtures\:
         resource: '@LIVAppBundle/DataFixtures'
         tags: ['doctrine.fixture.orm']
+
+    LIV\UserBundle\DataFixtures\:
+        resource: '@LIVUserBundle/DataFixtures'
+        tags: ['doctrine.fixture.orm']

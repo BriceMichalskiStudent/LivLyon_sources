@@ -76,7 +76,7 @@
         </div>
         {% for image in sponsoredPlace.images %}
             {% if loop.first %}
-                <div class="parallax"><img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ sponsoredPlace.name }}"></div>
+                <div class="parallax"><img src="{{ asset('img/place/' ~ image.image ) }}" alt="{{ sponsoredPlace.name }}"></div>
             {% endif %}
         {% endfor %}
 

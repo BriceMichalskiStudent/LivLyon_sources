@@ -39,7 +39,20 @@ class Tag
      * @ORM\ManyToMany(targetEntity="Event", mappedBy="tags")
      */
     private $events;
-    
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->places = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * Get id
      *
@@ -72,13 +85,6 @@ class Tag
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->places = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

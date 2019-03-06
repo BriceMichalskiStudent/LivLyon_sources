@@ -5,3 +5,8 @@ liv_app:
 liv_user:
     resource: "@LIVUserBundle/Resources/config/routing.yml"
     prefix:   /user
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin

@@ -10,16 +10,24 @@ class UserFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $userAdmin = new User();
+        $user = new User();
 
-        $userAdmin->setUsername("foo");
-        $userAdmin->setEmail("foo@bar.baz");
-        $userAdmin->setPassword("bar");
+        $user->setUsername("foo");
+        $user->setEmail("foo@bar.baz");
+        $user->setPlainPassword("bar");
+        $user->setRoles(['ROLE_USER']);
+        $user->setEnabled(true);
 
-        $manager->persist($userAdmin);
+        $admin = new User();
+
+        $admin->setUsername("admin");
+        $admin->setEmail("mailer.dev.brice@gmail.com");
+        $admin->setPlainPassword("Admin1234");
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setEnabled(true);
+
+        $manager->persist($user);
+        $manager->persist($admin);
         $manager->flush();
-
-        // other fixtures can get this object using the UserFixtures::ADMIN_USER_REFERENCE constant
-        $this->addReference(self::ADMIN_USER_REFERENCE, $userAdmin);
     }
 }
