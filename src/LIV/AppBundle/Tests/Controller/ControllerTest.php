@@ -15,6 +15,17 @@ class ControllerTest extends WebTestCase
         $this->assertEquals("200", $response->getStatusCode());
     }
 
+    public function testDisplayContactPage()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/contact');
+        $response = $client->getResponse();
+
+        $this->assertEquals("200", $response->getStatusCode());
+    }
+
+    
+
     public function testShowPlacesCategoryContent()
     {
         $client = static::createClient();
