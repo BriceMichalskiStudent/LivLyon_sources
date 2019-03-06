@@ -6,6 +6,10 @@ liv_app_contact:
     path:   /contact
     defaults: { _controller: LIVAppBundle:Contact:contact}
 
+liv_app_qui_sommes_nous:
+    path: /team
+    defaults: { _controller: LIVAppBundle:Default:quiSommesNous}
+
 liv_place:
     resource: "@LIVAppBundle/Resources/config/routing-place.yml"
 

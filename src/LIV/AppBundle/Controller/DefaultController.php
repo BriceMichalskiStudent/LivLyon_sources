@@ -35,4 +35,9 @@ class DefaultController extends Controller
             "eventCategories" => $eventCategories
         ));
     }
+
+    public function quiSommesNousAction()
+    {
+        return $this->render('@LIVApp/Default/qui-sommes-nous.html.twig');
+    }
 }
