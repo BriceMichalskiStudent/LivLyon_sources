@@ -24,7 +24,7 @@ class ControllerTest extends WebTestCase
         $this->assertEquals("200", $response->getStatusCode());
     }
 
-    
+
 
     public function testShowPlacesCategoryContent()
     {
