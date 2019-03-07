@@ -12,7 +12,7 @@ function displayMap(){
 function showPosition(position) {
 
     if (!zoom){
-        var zoom = 15;
+        var zoom = 14;
     }
 
     if (typeof center !== 'undefined' ){
