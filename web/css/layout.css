@@ -14,6 +14,7 @@
 #mapid {
     height: 480px;
     margin-bottom: 2em;
+    z-index: 0;
 }
 
 .placesPresentation{

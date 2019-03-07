@@ -81,7 +81,8 @@ class ControllerTest extends WebTestCase
         $this->assertEquals("404", $response->getStatusCode());
     }
 
-    public function testAroundMe(){
+    public function testAroundMe()
+    {
         $client = static::createClient();
         $client->request('GET', '/around-me');
         $response = $client->getResponse();

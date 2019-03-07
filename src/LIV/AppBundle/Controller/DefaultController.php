@@ -36,15 +36,13 @@ class DefaultController extends Controller
         ));
     }
 
-    public function aroundMeAction(){
-
+    public function aroundMeAction()
+    {
         $em = $this->getDoctrine()->getManager();
         $places = $em->getRepository('LIVAppBundle:Place')->findAll();
 
         return $this->render('@LIVApp/Default/around-me.html.twig', array(
             "places" => $places
         ));
-
-
     }
 }
