@@ -1,0 +1,59 @@
+{% extends '@LIVApp/Default/layout.html.twig' %}
+
+{% block body %}
+    <!-- map -->
+    <div class="container">
+        <div class="row">
+            <h2 style="text-align: center; color: grey">Autour de toi</h2>
+            <hr>
+            <div  id="mapid">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    {% if places is not null %}
+        <script>
+            var zoom = 8;
+            {% for place in places %}
+                var marker{{ place.id }} = L.marker([{{ place.latitude }}, {{ place.longitude }}]);
+                marker{{ place.id }}.bindPopup(`
+                   <div style="width:20em;text-align:center;" class="">
+                        {% for image in place.images %}
+                            {% if loop.first %}
+                                <img src="{{ asset('img/place/' ~ image.image ) }}" alt="{{ image.image }}" class='responsive-img'>
+                            {% endif %}
+
+                        {% endfor %}
+                         <p class="card-title col s12 m6" style="font-weight: bold">{{ place.name }}</p>
+                        <p class="col s12 m6" id="rating_tags_block">
+
+                            {% for i in 1..5 %}
+                                {% if place.rating >= i %}
+                                    <span class="ratingStar"> ★ </span>
+                                {% else %}
+                                    <span class="ratingStar"> ☆ </span>
+                                {%  endif %}
+                            {% endfor %}
+
+                        </p>
+                       <p class="col s12 m12" id="short_description">
+                            " {{ place.shortDescription }} "
+                       </p>
+
+                        <a class="btn wave-effect" href="{{ path('show_single_place',{'slugPlace': place.slug, 'slugCategory': 'arroundme' }) }}" style="background-color: #60539A;text-align:center;color:white;">Voir la fiche</a>
+
+                    </div>
+                `);
+
+            {% endfor %}
+
+            var markers = [{% for place in places %}marker{{ place.id }}{% if not loop.last %},{% endif %}{% endfor %}];
+
+            displayMap();
+        </script>
+    {% endif %}
+{% endblock %}

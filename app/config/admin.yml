@@ -50,8 +50,8 @@ easy_admin:
         - { property: 'fullDescription' , label: "Article" }
         - { type: 'tab', label: 'Localisation' }
         - { property: 'address',type: 'LIV\AppBundle\Form\AddressType', label: 'Adresse' }
-        - { property: 'longitude'}
         - { property: 'latitude'}
+        - { property: 'longitude'}
         - { type: 'tab', label: 'Classification' }
         - { property: 'categories', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\PlaceCategory' } }
         - { property: 'tags', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\Tag' } }
