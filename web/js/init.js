@@ -1,6 +1,7 @@
 (function($){
   $(function(){
 
+
     $('.sidenav').sidenav();
     $('.parallax').parallax();
     $(".dropdown-trigger").dropdown();
@@ -11,6 +12,7 @@
           indicators: true
       });
       autoplay();
+
       function autoplay() {
           $('.carousel').carousel('next');
           setTimeout(autoplay, 4500);
