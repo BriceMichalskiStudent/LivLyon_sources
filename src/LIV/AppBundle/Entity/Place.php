@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\Index;
 /**
  * Place
  *
- * @ORM\Table(name="place",indexes={@Index(name="place_search_idx", columns={"slug"})})
+ * @ORM\Table(name="place",indexes={@Index(name="place_search_idx", columns={"slug","address","tags","categories"})})
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\PlaceRepository")
  * @ORM\HasLifecycleCallbacks()
  */
