@@ -6,6 +6,10 @@ liv_app_contact:
     path:   /contact
     defaults: { _controller: LIVAppBundle:Contact:contact}
 
+liv_app_around_me:
+    path:   /around-me
+    defaults: { _controller: LIVAppBundle:Default:aroundMe}
+
 liv_place:
     resource: "@LIVAppBundle/Resources/config/routing-place.yml"
 

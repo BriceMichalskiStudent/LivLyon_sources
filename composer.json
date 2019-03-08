@@ -1,7 +1,8 @@
 {
     "name": "symfony/framework-standard-edition",
-    "license": "MIT",
+    "license": "Apache2",
     "type": "project",
+    "version": "1.0.0" ,
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-4": {
@@ -57,7 +58,7 @@
     },
     "config": {
         "platform": {
-           
+
         },
         "sort-packages": true
     },

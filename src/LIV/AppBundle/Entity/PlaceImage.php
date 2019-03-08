@@ -2,6 +2,7 @@
 
 namespace LIV\AppBundle\Entity;
 
+use Doctrine\ORM\Mapping\Index;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -9,7 +10,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * PlaceImage
  * @Vich\Uploadable
- * @ORM\Table(name="place_image")
+ * @ORM\Table(name="place_image",indexes={@Index(name="place_image_search_idx", columns={"image"})})
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\PlaceImageRepository")
  *
  */

@@ -35,4 +35,14 @@ class DefaultController extends Controller
             "eventCategories" => $eventCategories
         ));
     }
+
+    public function aroundMeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $places = $em->getRepository('LIVAppBundle:Place')->findAll();
+
+        return $this->render('@LIVApp/Default/around-me.html.twig', array(
+            "places" => $places
+        ));
+    }
 }

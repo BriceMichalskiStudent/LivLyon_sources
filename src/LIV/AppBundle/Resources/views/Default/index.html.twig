@@ -14,11 +14,11 @@
                 <div class="row center">
                     <h5 class="header white-text col s12 light"></h5>
                 </div>
-                <!--
+
                 <div class="row center">
-                    <a href="#" id="download-button" class="btn-large waves-effect waves-red blue darken-4 lighten-1 ">Que faire ?</a>
+                    <a href="{{ path('liv_app_around_me') }}" id="download-button" class="btn-large waves-effect waves-red " style="background-color: #60539A;z-index: 0">Que faire ?</a>
                 </div>
-                -->
+
                 <br><br>
             </div>
         </div>
@@ -74,7 +74,7 @@
                     <h5 class="header white-text col s12 light center"></h5>
                 </div>
                 <div class="row center">
-                    <a href="{{ path('show_single_place',{'slugPlace': sponsoredPlace.slug, 'slugCategory':'recommandation' }) }}" style="background-color:#60539A;" id="download-button" class="btn-large waves-effect waves-red  darken-4 lighten-1">Je découvre</a>
+                    <a href="{{ path('show_single_place',{'slugPlace': sponsoredPlace.slug, 'slugCategory':'recommandation' }) }}" style="background-color:#60539A;z-index: 0" id="download-button" class="btn-large waves-effect waves-red  darken-4 lighten-1">Je découvre</a>
                 </div>
             </div>
         </div>
@@ -109,7 +109,7 @@
     <br>
     <!-- Carroussel -->
 
-    <div class="carousel carousel-slider center">
+    <div class="carousel carousel-slider center" style="height: 35em">
         <img src="/img/carousel-1.jpg" class="carousel-item responsive-img">
         <img src="/img/carousel-2.jpg" class="carousel-item responsive-img">
         <img src="/img/carousel-3.jpg" class="carousel-item responsive-img">
@@ -121,8 +121,35 @@
     <script>
         var center = { latitude: {{ sponsoredPlace.latitude }} , longitude: {{ sponsoredPlace.longitude }} };
         var marker = L.marker([{{ sponsoredPlace.latitude }}, {{ sponsoredPlace.longitude }}]);
-        marker.bindPopup("<b>{{ sponsoredPlace.name }}</b>");
+        marker.bindPopup(`
+                   <div style="width:20em;text-align:center;" class="">
+                        {% for image in sponsoredPlace.images %}
+                            {% if loop.first %}
+                                <img src="{{ asset('img/place/' ~ image.image ) }}" alt="{{ image.image }}" class='responsive-img'>
+                            {% endif %}
 
+                        {% endfor %}
+                         <p class="col s12 m6" style="font-weight: bold">{{ sponsoredPlace.name }}</p>
+                        <p class="col s12 m6" id="rating_tags_block">
+
+                            {% for i in 1..5 %}
+                                {% if sponsoredPlace.rating >= i %}
+                                    <span class="ratingStar"> ★ </span>
+                                {% else %}
+                                    <span class="ratingStar"> ☆ </span>
+                                {%  endif %}
+                            {% endfor %}
+
+                        </p>
+                       <p class="col s12 m12" id="short_description">
+                            " {{ sponsoredPlace.shortDescription }} "
+                       </p>
+
+                        <a class="btn wave-effect" href="{{ path('show_single_place',{'slugPlace': sponsoredPlace.slug, 'slugCategory': 'arroundme' }) }}" style="background-color: #60539A;text-align:center;color:white;">Voir la fiche</a>
+
+                    </div>
+                `);
+        ``
         var markers = [marker];
 
         displayMap();

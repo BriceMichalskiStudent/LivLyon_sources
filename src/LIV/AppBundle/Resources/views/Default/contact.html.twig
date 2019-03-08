@@ -5,8 +5,42 @@
         <div class="row">
             <div class="col m10 offset-m1 s12">
                 <h2 class="center-align">Contactez-nous</h2>
-                {{  form_start(form) }}
 
+                <hr>
+                {{ form_start(form) }}
+                <div class="col m6">
+                    {{ form_label(form.name,'Nom') }}<br/>
+                    {{ form_errors(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+
+                <div class="col m6">
+                    {{ form_label(form.firstname,'Prénom') }}<br/>
+                    {{ form_errors(form.firstname) }}
+                    {{ form_widget(form.firstname) }}
+                </div>
+
+                <div class="col m6">
+                    {{ form_label(form.email,'Adresse Email sur lequel nous pouvons vous répondre') }}<br/>
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }}
+                </div>
+
+                <div class="col m6">
+                    {{ form_label(form.object,'A quel sujet voulez vous nous contacter ?') }}<br/>
+                    {{ form_errors(form.object) }}
+                    {{ form_widget(form.object) }}
+                </div>
+
+                <div class="col m12" style="margin-top: 1em ;">
+                    {{ form_label(form.message,'Votre message ') }}<br/>
+                    {{ form_errors(form.message) }}
+                    {{ form_widget(form.message) }}
+                </div>
+
+                <div class="col m12 " style="margin-top: 1em ;text-align: center">
+                    {{ form_widget(form.envoyer, { 'attr': {'class': 'waves-effect waves-light btn', 'style':'background-color:#60539A'} }) }}
+                </div>
                 {{ form_end(form) }}
             </div>
         </div>
