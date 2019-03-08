@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new LIV\UserBundle\LIVUserBundle(),
             new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
