@@ -18,6 +18,10 @@ easy_admin:
       - '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig'
     assets:
       favicon: '/favicon.png'
+      css:
+          - 'bundles/easyadmin/bootstrap-all.css'
+      js:
+          - 'bundles/easyadmin/bootstrap-all.js'
 
   formats:
     date:     'd/m/Y'
