@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Event
  *
- * @ORM\Table(name="event",indexes={@Index(name="event_search_idx", columns={"slug"})})
+ * @ORM\Table(name="event",indexes={@Index(name="event_search_idx", columns={"name","slug"})})
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\EventRepository")
  * @ORM\HasLifecycleCallbacks()
  */
