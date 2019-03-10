@@ -7,7 +7,7 @@ liv_app_contact:
     defaults: { _controller: LIVAppBundle:Contact:contact}
 
 liv_app_qui_sommes_nous:
-    path: /team
+    path: /about-livlyon
     defaults: { _controller: LIVAppBundle:Default:quiSommesNous}
 
 liv_place:

@@ -24,7 +24,14 @@ class ControllerTest extends WebTestCase
         $this->assertEquals("200", $response->getStatusCode());
     }
 
+    public function testDisplayAboutUsPage()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/about-livlyon');
+        $response = $client->getResponse();
 
+        $this->assertEquals("200", $response->getStatusCode());
+    }
 
     public function testShowPlacesCategoryContent()
     {
@@ -44,7 +51,6 @@ class ControllerTest extends WebTestCase
         $this->assertEquals("200", $response->getStatusCode());
         $this->assertContains("place-0", $response->getContent());
     }
-
 
     public function testShowEventsCategoryContent()
     {
@@ -94,4 +100,6 @@ class ControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertEquals("404", $response->getStatusCode());
     }
+
+
 }
