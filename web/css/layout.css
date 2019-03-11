@@ -1,7 +1,3 @@
-html {
-    font-family: 'Roboto';
-}
-
 .nav-wrapper{
     background-color: #60539A;
 }
@@ -18,6 +14,7 @@ html {
 #mapid {
     height: 480px;
     margin-bottom: 2em;
+    z-index: 0;
 }
 
 .placesPresentation{

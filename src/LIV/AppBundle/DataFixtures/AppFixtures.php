@@ -11,7 +11,6 @@ use LIV\AppBundle\Entity\Place;
 use LIV\AppBundle\Entity\PlaceCategory;
 use LIV\AppBundle\Entity\PlaceImage;
 use LIV\AppBundle\Entity\Tag;
-use Symfony\Component\DomCrawler\Image;
 
 class AppFixtures extends Fixture
 {
@@ -61,12 +60,12 @@ class AppFixtures extends Fixture
             $place->addCategory($categoriePlaces);
             //ADD IMAGES
             $image = new PlaceImage();
-            $image->setImageName("demo.jpg");
-            $image->setAlt($place->getName());
+            $image->setImage("demo.jpg");
+            $image->setUpdatedAt(new \DateTime('now'));
             $image->setPlace($place);
             $image2 = new PlaceImage();
-            $image2->setImageName("demo2.jpg");
-            $image2->setAlt($place->getName());
+            $image2->setImage("demo2.jpg");
+            $image2->setUpdatedAt(new \DateTime('now'));
             $image2->setPlace($place);
             $place->addImage($image);
             $place->addImage($image2);
@@ -91,16 +90,17 @@ class AppFixtures extends Fixture
             $event->setLongitude(4.872813299999962);
             $event->addTag($commonTag);
             $event->addTag($tag);
+            $event->setAddress($address);
             // ADD IMAGES TO EVENT
             $eventImage1 = new EventImage();
-            $eventImage1->setImageName('demo-event1.jpg');
-            $eventImage1->setAlt($event->getName());
+            $eventImage1->setImage('demo-event1.jpg');
             $eventImage1->setEvent($event);
+            $eventImage1->setUpdatedAt(new \DateTime('now'));
             $event->addImage($eventImage1);
             $eventImage2 = new EventImage();
-            $eventImage2->setImageName('demo-event2.jpg');
-            $eventImage2->setAlt($event->getName());
+            $eventImage2->setImage('demo-event2.jpg');
             $eventImage2->setEvent($event);
+            $eventImage2->setUpdatedAt(new \DateTime('now'));
             $event->addImage($eventImage2);
             $manager->persist($event);
         }

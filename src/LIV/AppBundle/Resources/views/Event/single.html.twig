@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-image carousel carousel-slider center">
                     {% for image in event.images %}
-                        <img src="{{ asset('img/event/' ~ image.imageName ) }}" alt="{{ image.alt }}" class="carousel-item ">
+                        <img src="{{ asset('img/event/' ~ image.image ) }}" alt="{{ image.image }}" class="carousel-item ">
                     {% endfor %}
                     <span class="card-title" style="font-weight: bold">{{ event.name }}</span>
                 </div>

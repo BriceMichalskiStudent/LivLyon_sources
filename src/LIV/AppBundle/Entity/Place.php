@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\Index;
 /**
  * Place
  *
- * @ORM\Table(name="place",indexes={@Index(name="place_search_idx", columns={"slug"})})
+ * @ORM\Table(name="place",indexes={@Index(name="place_search_idx", columns={"name","slug"})})
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\PlaceRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -40,7 +40,7 @@ class Place
     /**
      * @var string
      *
-     * @ORM\Column(name="link",type="string")
+     * @ORM\Column(name="link",type="string", nullable=true)
      */
     private $link;
 
@@ -119,12 +119,11 @@ class Place
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity="LIV\AppBundle\Entity\PlaceImage", mappedBy="place", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="LIV\AppBundle\Entity\PlaceImage", mappedBy="place", cascade={"persist"})
      */
     private $images;
 
     // METHOD
-
     /**
      * @ORM\PrePersist
      */
@@ -142,6 +141,7 @@ class Place
     {
         $this->updatedAt = new \DateTime("now");
     }
+
     /**
      * Constructor
      */
@@ -150,8 +150,13 @@ class Place
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    // GETTER AND SETTER
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
+
+    // GETTER AND SETTER
     /**
      * Get id
      *

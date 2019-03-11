@@ -3,12 +3,15 @@
 namespace LIV\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * EventImage
- *
+ * @Vich\Uploadable
  * @ORM\Table(name="event_image")
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\EventImageRepository")
+ *
  */
 class EventImage
 {
@@ -22,34 +25,59 @@ class EventImage
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
      * @var string
-     *
-     * @ORM\Column(name="imageName", type="string", length=255)
      */
-    private $imageName;
+    private $image;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255)
+     * @Vich\UploadableField(mapping="event_images", fileNameProperty="image")
+     * @var File
      */
-    private $alt;
+    private $imageFile;
 
     /**
      * @var Event
      *
      * @ORM\ManyToOne(targetEntity="LIV\AppBundle\Entity\Event", inversedBy="images")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $event;
 
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
 
-    private $file;
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
 
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -58,97 +86,39 @@ class EventImage
     }
 
     /**
-     * Set imageName
-     *
-     * @param string $imageName
-     *
-     * @return EventImage
+     * @return \DateTime
      */
-    public function setImageName($imageName)
+    public function getUpdatedAt(): \DateTime
     {
-        $this->imageName = $imageName;
-
-        return $this;
+        return $this->updatedAt;
     }
 
     /**
-     * Get imageName
-     *
-     * @return string
+     * @param \DateTime $updatedAt
      */
-    public function getImageName()
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
-        return $this->imageName;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return EventImage
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set event
-     *
-     * @param \LIV\AppBundle\Entity\Event $event
-     *
-     * @return EventImage
-     */
-    public function setEvent(\LIV\AppBundle\Entity\Event $event)
-    {
-        $this->event = $event;
-
-        return $this;
-    }
-
-    /**
-     * Get event
-     *
-     * @return \LIV\AppBundle\Entity\Event
+     * @return Event
      */
     public function getEvent()
     {
         return $this->event;
     }
 
-    // file manipulation
-    public function upload()
+    /**
+     * @param Event $event
+     */
+    public function setEvent(Event $event)
     {
-        $originalName= $this->file->getClientOriginalName();
-        $name= uniqid('EVENT').str_replace(' ', '-', $originalName);
-
-        $this->file->move($this->getUploadRootDir(), $name);
-
-        $this->imageName = $name;
-        $this->alt = $name;
+        $this->event = $event;
     }
 
-    public function getUploadDir()
+    public function __toString()
     {
-        return 'img/event';
-    }
-
-    protected function getUploadRootDir()
-    {
-        // On retourne le chemin relatif vers l'image pour notre code PHP
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return $this->image;
     }
 }

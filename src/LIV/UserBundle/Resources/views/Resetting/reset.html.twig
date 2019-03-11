@@ -1,0 +1,17 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "LIVUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <blockquote>
+        Merci de choisir un nouveau mots de passe
+    </blockquote>
+    <div id="resetbox">
+
+        {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+        {{ form_widget(form) }}
+        <div>
+            <input type="submit" id="_submit" name="_submit" value="{{ 'resetting.reset.submit'|trans }}" class="btn btn-success" /><br>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

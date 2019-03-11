@@ -15,11 +15,11 @@ echo "======================================================================"
 
 echo "=> PREPARE ENVIRONNEMEBT & LOAD FIXTURES"
 
-bin/console c:c --env=test
+php bin/console c:c --env=test
 
-bin/console d:s:d -f
-bin/console d:s:c
-bin/console d:f:l -n
+php bin/console d:s:d -f
+php bin/console d:s:c
+php bin/console d:f:l -n
 
 
 echo "-----------------------------------------------------"

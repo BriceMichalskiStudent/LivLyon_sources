@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Event
  *
- * @ORM\Table(name="event",indexes={@Index(name="event_search_idx", columns={"slug"})})
+ * @ORM\Table(name="event",indexes={@Index(name="event_search_idx", columns={"name","slug"})})
  * @ORM\Entity(repositoryClass="LIV\AppBundle\Repository\EventRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -106,7 +106,7 @@ class Event
     private $images;
 
     /**
-     * @ORM\ManyToOne(targetEntity="LIV\AppBundle\Entity\Address", cascade={"persist","persist"})
+     * @ORM\ManyToOne(targetEntity="LIV\AppBundle\Entity\Address", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $address;
@@ -363,6 +363,11 @@ class Event
     public function __construct()
     {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     /**

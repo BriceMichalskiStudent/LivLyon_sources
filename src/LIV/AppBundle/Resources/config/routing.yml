@@ -10,6 +10,10 @@ liv_app_qui_sommes_nous:
     path: /about-livlyon
     defaults: { _controller: LIVAppBundle:Default:quiSommesNous}
 
+liv_app_around_me:
+    path:   /around-me
+    defaults: { _controller: LIVAppBundle:Default:aroundMe}
+
 liv_place:
     resource: "@LIVAppBundle/Resources/config/routing-place.yml"
 

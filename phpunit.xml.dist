@@ -10,12 +10,14 @@
     <php>
         <ini name="error_reporting" value="-1" />
         <server name="KERNEL_CLASS" value="AppKernel" />
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak" />
     </php>
 
     <testsuites>
         <testsuite name="Project Test Suite">
             <directory>tests</directory>
             <directory>src/LIV/AppBundle/Tests</directory>
+            <directory>src/LIV/UserBundle/Tests</directory>
         </testsuite>
     </testsuites>
 

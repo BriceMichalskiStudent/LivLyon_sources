@@ -60,6 +60,10 @@ class PlaceCategory
         $this->places = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
     /**
      * Set name
      *

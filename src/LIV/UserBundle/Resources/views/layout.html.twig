@@ -1,0 +1,39 @@
+{% extends '@LIVApp/Default/layout.html.twig' %}
+
+{% block description %}{% endblock %}
+
+{% block title %}Liv Lyon - USER{% endblock %}
+
+{% block body %}
+    <link type="text/css" rel="stylesheet"  href="{{ asset('css/user.css') }}" media="screen,projection">
+
+    <div class="container">
+        <div id="fos_user_content">
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    {% for key, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <script>
+                M.toast({html: '{{ message|trans({}, 'FOSUserBundle') }}'});
+            </script>
+        {% endfor %}
+    {% endfor %}
+
+    {% if error is defined %}
+        {% if error %}
+            <script>
+                M.toast({html: '<span class="errorToast">{{ error.messageKey|trans(error.messageData, 'security') }}<span/>'});
+            </script>
+            <div></div>
+        {% endif %}
+    {% endif %}
+
+
+
+
+{% endblock %}

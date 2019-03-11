@@ -14,13 +14,15 @@
                 <div class="row center">
                     <h5 class="header white-text col s12 light"></h5>
                 </div>
+
                 <div class="row center">
-                    <a href="#" id="download-button" class="btn-large waves-effect waves-red blue darken-4 lighten-1 ">Que faire ?</a>
+                    <a href="{{ path('liv_app_around_me') }}" id="download-button" class="btn-large waves-effect waves-red " style="background-color: #60539A;z-index: 0">Que faire ?</a>
                 </div>
+
                 <br><br>
             </div>
         </div>
-        <div class="parallax"><img src="{{ asset('img/background1.jpg') }}" alt="Unsplashed background img 1"></div>
+        <div class="parallax"><img class="responsive-img" src="{{ asset('img/background1.jpg') }}" alt="Unsplashed background img 1"></div>
     </div>
 
     <!-- PRESENTATION TEXT -->
@@ -31,28 +33,30 @@
             <div class="row">
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h4 class="center brown-text"><i class="material-icons">flash_on</i></h4>
-                        <h5 class="center">Blabla sur la magnifique ville de lyon</h5>
+                        <h4 class="center brown-text"><i class="material-icons">location_on</i></h4>
+                        <h5 class="center">European city</h5>
 
-                        <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                        <p class="light" style="text-align: justify">
+                            L’équipe de Liv ’Lyon te partage toutes ses bonnes adresses pour te faire découvrir et apprécier Lyon ! Ville active, dynamique et accueillante dans laquelle tu pourras profiter des différents quartiers et des évènements qui animent la ville. Que tu sois de passage, en quête de nouveaux lieux pour changer tes habitudes ou encore à la recherche des merveilles de Lyon, tu es au bon endroit.
+                        </p>
                     </div>
                 </div>
 
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h4 class="center brown-text"><i class="material-icons">group</i></h4>
-                        <h5 class="center">Blabla sur le but de notre tavail acharnée</h5>
+                        <h4 class="center brown-text"><i class="material-icons">people</i></h4>
+                        <h5 class="center">Un but</h5>
 
-                        <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                        <p class="light" style="text-align: justify">Notre équipe rassemblant neufs étudiants dotés chacun de mission différente sera au rendez-vous et très active pour remplir notre but qui est de te faire connaître les nouveautés de bars et restaurants, t’informer des événements à venir et partager toutes nos expériences qui pourront t’intéresser !</p>
                     </div>
                 </div>
 
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h4 class="center brown-text"><i class="material-icons">settings</i></h4>
-                        <h5 class="center">Blabla sur ce qu'on veux</h5>
+                        <h4 class="center brown-text"><i class="material-icons">restaurant</i></h4>
+                        <h5 class="center">Ton guide 2.0</h5>
 
-                        <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                        <p class="light" style="text-align: justify">Et pour vivre pleinement Lyon commençons par bien manger ! Allez boire un verre ? Jamais sans nous ! On maîtrise le sujet et les bons plans ; lieux atypiques, confortables, belles vues, intimes ou pour se réunir à 15… tout y est ! Festival, événements particuliers et soirées organisées on te renseigne pour te faciliter la vie ! Au milieu des rues de Lyon se cache des expos, musées, site, monuments… du contemporain au plus éloigné. L’histoire de la ville a tant de choses à te partager. Liv’Lyon te guide !</p>
                     </div>
                 </div>
             </div>
@@ -65,18 +69,18 @@
         <div class="section no-pad-bot">
             <div class="container center">
                 <br><br>
-                <h1 id="parallax1-title" class="header center white-text text-lighten-2">On recommande le " {{ sponsoredPlace.name }} ".</h1>
+                <h1 id="parallax1-title" class="header center white-text text-lighten-2">Nous recommandons le <br> " {{ sponsoredPlace.name }} ".</h1>
                 <div class="row center">
                     <h5 class="header white-text col s12 light center"></h5>
                 </div>
                 <div class="row center">
-                    <a href="{{ path('show_single_place',{'slugPlace': sponsoredPlace.slug, 'slugCategory':'recommandation' }) }}" id="download-button" class="btn-large waves-effect waves-red blue darken-4 lighten-1">Je découvre</a>
+                    <a href="{{ path('show_single_place',{'slugPlace': sponsoredPlace.slug, 'slugCategory':'recommandation' }) }}" style="background-color:#60539A;z-index: 0" id="download-button" class="btn-large waves-effect waves-red  darken-4 lighten-1">Je découvre</a>
                 </div>
             </div>
         </div>
         {% for image in sponsoredPlace.images %}
             {% if loop.first %}
-                <div class="parallax"><img src="{{ asset('img/place/' ~ image.imageName ) }}" alt="{{ sponsoredPlace.name }}"></div>
+                <div class="parallax"><img src="{{ asset('img/place/' ~ image.image ) }}" alt="{{ sponsoredPlace.name }}"></div>
             {% endif %}
         {% endfor %}
 
@@ -102,16 +106,13 @@
     </div>
 {% endif %}
 
-
     <br>
     <!-- Carroussel -->
 
-    <div class="carousel carousel-slider center">
-        <img src="/img/carousel-1.jpg" class="carousel-item">
-        <img src="/img/carousel-2.jpg" class="carousel-item">
-        <img src="/img/carousel-3.jpg" class="carousel-item">
-        <img src="/img/carousel-4.jpg" class="carousel-item">
-        <img src="/img/carousel-5.jpg" class="carousel-item">
+    <div class="carousel carousel-slider center" style="height: 35em">
+        <img src="/img/carousel-1.jpg" class="carousel-item responsive-img">
+        <img src="/img/carousel-2.jpg" class="carousel-item responsive-img">
+        <img src="/img/carousel-3.jpg" class="carousel-item responsive-img">
     </div>
 {% endblock %}
 
@@ -120,8 +121,35 @@
     <script>
         var center = { latitude: {{ sponsoredPlace.latitude }} , longitude: {{ sponsoredPlace.longitude }} };
         var marker = L.marker([{{ sponsoredPlace.latitude }}, {{ sponsoredPlace.longitude }}]);
-        marker.bindPopup("<b>{{ sponsoredPlace.name }}</b>");
+        marker.bindPopup(`
+                   <div style="width:20em;text-align:center;" class="">
+                        {% for image in sponsoredPlace.images %}
+                            {% if loop.first %}
+                                <img src="{{ asset('img/place/' ~ image.image ) }}" alt="{{ image.image }}" class='responsive-img'>
+                            {% endif %}
 
+                        {% endfor %}
+                         <p class="col s12 m6" style="font-weight: bold">{{ sponsoredPlace.name }}</p>
+                        <p class="col s12 m6" id="rating_tags_block">
+
+                            {% for i in 1..5 %}
+                                {% if sponsoredPlace.rating >= i %}
+                                    <span class="ratingStar"> ★ </span>
+                                {% else %}
+                                    <span class="ratingStar"> ☆ </span>
+                                {%  endif %}
+                            {% endfor %}
+
+                        </p>
+                       <p class="col s12 m12" id="short_description">
+                            " {{ sponsoredPlace.shortDescription }} "
+                       </p>
+
+                        <a class="btn wave-effect" href="{{ path('show_single_place',{'slugPlace': sponsoredPlace.slug, 'slugCategory': 'arroundme' }) }}" style="background-color: #60539A;text-align:center;color:white;">Voir la fiche</a>
+
+                    </div>
+                `);
+        ``
         var markers = [marker];
 
         displayMap();

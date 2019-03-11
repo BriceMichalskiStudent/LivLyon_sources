@@ -3,10 +3,10 @@
 
 <!-- NAVIGATION -->
 <!-- LAPTOP -->
-<div class="navbar-fixed">
+<div class="navbar-fixed" style="z-index: 100">
     <nav>
         <div class="nav-wrapper">
-            <a href="{{ path("liv_app_homepage") }}" class="brand-logo"><img src="{{ asset('img/logo.png') }}"></a>
+            <a href="{{ path("liv_app_homepage") }}" class="brand-logo"><img style="height: 5em" src="{{ asset('img/logo.png') }}"></a>
             <!-- large screen -->
             <ul class="right hide-on-med-and-down">
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown-places">Bonnes adresses<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -49,15 +49,6 @@
 
 <ul id="nav-mobile" class="sidenav collapsible">
     <li>
-        <form>
-            <div class="input-field">
-                <input id="search" type="search" placeholder="Que cherchez vous ?" required>
-                <label class="label-icon" for="search"></label>
-                <i class="material-icons">close</i>
-            </div>
-        </form>
-    </li>
-    <li>
         <div class="collapsible-header">Bonnes adresses<i class="material-icons">arrow_drop_down</i></div>
         <div class="collapsible-body">
             <ul>
@@ -73,8 +64,6 @@
             </ul>
         </div>
     </li>
-    <li><a href="#">Fanzine</a></li>
-    <li><a href="#">Shop</a></li>
 </ul>
 
 <!-- NAVIGATION END -->
