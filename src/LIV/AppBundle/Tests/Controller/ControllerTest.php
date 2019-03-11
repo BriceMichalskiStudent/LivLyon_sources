@@ -100,6 +100,4 @@ class ControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertEquals("404", $response->getStatusCode());
     }
-
-
 }

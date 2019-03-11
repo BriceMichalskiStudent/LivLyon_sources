@@ -32,8 +32,7 @@ class ContactController extends Controller
                 ->setContentType('text/html')
                 ->setBody(
                     $this->renderView(
-
-                    '@LIVApp/Mail/newContact.html.twig',
+                        '@LIVApp/Mail/newContact.html.twig',
                         array(
                             'firstname' => $contact->getFirstname(),
                             'name' => $contact->getName(),
