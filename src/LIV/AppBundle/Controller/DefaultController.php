@@ -36,7 +36,7 @@ class DefaultController extends Controller
         ));
     }
   
-   public function aroundMeAction()
+    public function aroundMeAction()
     {
         $em = $this->getDoctrine()->getManager();
         $places = $em->getRepository('LIVAppBundle:Place')->findAll();
