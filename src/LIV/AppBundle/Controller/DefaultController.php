@@ -44,7 +44,6 @@ class DefaultController extends Controller
         return $this->render('@LIVApp/Default/around-me.html.twig', array(
             "places" => $places
         ));
-
     }
   
     public function quiSommesNousAction()
