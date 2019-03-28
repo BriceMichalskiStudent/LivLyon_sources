@@ -21,19 +21,19 @@
                 </div>
 
                 <div class="col m6">
-                    {{ form_label(form.email,'Adresse Email sur lequel nous pouvons vous répondre') }}<br/>
+                    {{ form_label(form.email,'Email') }}<br/>
                     {{ form_errors(form.email) }}
                     {{ form_widget(form.email) }}
                 </div>
 
                 <div class="col m6">
-                    {{ form_label(form.object,'A quel sujet voulez vous nous contacter ?') }}<br/>
+                    {{ form_label(form.object,'Objet du message') }}<br/>
                     {{ form_errors(form.object) }}
                     {{ form_widget(form.object) }}
                 </div>
 
                 <div class="col m12" style="margin-top: 1em ;">
-                    {{ form_label(form.message,'Votre message ') }}<br/>
+                    {{ form_label(form.message,'Votre message') }}<br/>
                     {{ form_errors(form.message) }}
                     {{ form_widget(form.message) }}
                 </div>
