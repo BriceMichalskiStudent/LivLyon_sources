@@ -55,6 +55,11 @@
                             </div>
                         </div>
 
+                        {# VIDEO #}
+                        {% if event.video %}
+                            <iframe src="{{ event.video }}" class="col s12 m12 yt-iframe" frameborder="0" allowfullscreen></iframe>
+                        {% endif %}
+
                         <!-- map -->
                         <div class="col s12 m12 placeLocation">
                             <div id="mapid">
