@@ -15,9 +15,11 @@
                     <h5 class="header white-text col s12 light"></h5>
                 </div>
 
+                <!-- FUTURE FEATURE WHEN HTTPS WAS ENABLE.
                 <div class="row center">
                     <a href="{{ path('liv_app_around_me') }}" id="download-button" class="btn-large waves-effect waves-red " style="background-color: #60539A;z-index: 0">Que faire ?</a>
                 </div>
+                -->
 
                 <br><br>
             </div>
@@ -89,7 +91,6 @@
     <!-- RECOMMANDATION DESCRIPTION-->
     <div class="container">
         <div class="section">
-
             <div class="row">
                 <div class="col s12 center">
                     <h3><i class="mdi-content-send brown-text"></i></h3>
@@ -101,19 +102,15 @@
         </div>
     </div>
 
-    <!-- map -->
-    <div class="container" id="mapid">
-
-    </div>
 {% endif %}
 
     <br>
     <!-- Carroussel -->
 
-    <div class="carousel carousel-slider center" style="height: 35em">
-        <img src="/img/carousel-1.jpg" class="carousel-item responsive-img">
-        <img src="/img/carousel-2.jpg" class="carousel-item responsive-img">
-        <img src="/img/carousel-3.jpg" class="carousel-item responsive-img">
+    <div class="carousel carousel-slider center">
+        <img src="/img/carousel-1.jpg" style="max-width: 100%; height: auto" class="carousel-item">
+        <img src="/img/carousel-2.jpg" style="max-width: 100%; height: auto" class="carousel-item">
+        <img src="/img/carousel-3.jpg" style="max-width: 100%; height: auto" class="carousel-item">
     </div>
 {% endblock %}
 
