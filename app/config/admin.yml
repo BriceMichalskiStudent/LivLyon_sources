@@ -46,9 +46,9 @@ easy_admin:
         fields:
         - { type: 'tab', label: 'Information de base' }
         - { property: 'name', label: "Nom de l'etablissement" }
-        - { property: 'link',type: 'url', label: 'site internet'}
+        - { property: 'link',type: 'url', label: 'Site internet'}
         - { property: 'rating',type: 'choice', type_options: {choices: {'1':'1','2':'2' ,'3':'3','4':'4' ,'5':'5'}}, label: 'Note' }
-        - { property: 'information',label: "information d'ouverture" }
+        - { property: 'information',label: "Information d'ouverture" }
         - { type: 'tab', label: 'Redaction' }
         - { property: 'shortDescription' , label: "Phrase d'accroche" }
         - { property: 'fullDescription' , label: "Article" }
@@ -61,6 +61,8 @@ easy_admin:
         - { property: 'tags', type: 'easyadmin_autocomplete', type_options: { class: 'LIV\AppBundle\Entity\Tag' } }
         - { type: 'tab', label: 'Images' }
         - { property: 'images', type: 'entity', type_options: {class: 'LIV\AppBundle\Entity\PlaceImage',multiple: true,by_reference: false} }
+        - { type: 'tab', label: 'Vidéo' }
+        - { property: 'video',type: 'url', label: 'Url de la vidéo'}
 
     Place_image:
       class: LIV\AppBundle\Entity\PlaceImage
@@ -134,6 +136,8 @@ easy_admin:
         - { type: 'tab', label: 'Liens organisation' }
         - { property: 'linkTicketing',type: 'url', label: 'Billetterie'}
         - { property: 'linkOrganiser', type: 'url', label: 'Organisateur'}
+        - { type: 'tab', label: 'Vidéo' }
+        - { property: 'video',type: 'url', label: 'Url de la vidéo (sous la forme: https://www.youtube.com/embed/{ID de la vidéo})'}
 
     Event_image:
       class: LIV\AppBundle\Entity\EventImage

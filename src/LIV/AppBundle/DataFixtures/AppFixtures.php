@@ -69,6 +69,7 @@ class AppFixtures extends Fixture
             $image2->setPlace($place);
             $place->addImage($image);
             $place->addImage($image2);
+            $place->setVideo("https://www.youtube.com/embed/rrpp8lUufk8");
             $manager->persist($place);
             // EVENT FIXTURES
             //CREATE 10 CATEGORIES OF EVENTS
@@ -91,6 +92,7 @@ class AppFixtures extends Fixture
             $event->addTag($commonTag);
             $event->addTag($tag);
             $event->setAddress($address);
+            $event->setVideo("https://www.youtube.com/embed/rrpp8lUufk8");
             // ADD IMAGES TO EVENT
             $eventImage1 = new EventImage();
             $eventImage1->setImage('demo-event1.jpg');

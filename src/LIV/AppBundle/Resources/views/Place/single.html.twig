@@ -53,7 +53,13 @@
                         </p>
                     </div>
 
-                    <!-- FUTURE FEATURE WHEN HTTPS WAS ENABLE.
+                    {# VIDEO #}
+                    {% if place.video %}
+                        <iframe src="{{ place.video }}" class="col s12 m12 yt-iframe" frameborder="0" allowfullscreen></iframe>
+                    {% endif %}
+                   
+                   <!-- FUTURE FEATURE WHEN HTTPS WAS ENABLE.
+                    <!-- map -->
                     <div class="col s12 m12 placeLocation" >
                         <div id="mapid">
                         </div>
