@@ -14,7 +14,7 @@ Please refer to the README of the following repository: [liv_lyon_dev](https://g
 What's inside?
 --------------
 
-Sources code of www.livlyon.com website
+Sources code of [livlyon.com](http://livlyon.com) website
 
 What's Liv'Lyon?
 --------------

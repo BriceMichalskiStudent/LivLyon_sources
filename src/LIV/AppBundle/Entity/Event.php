@@ -106,6 +106,13 @@ class Event
     private $images;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="videoUrl", type="string", length=255, nullable=true)
+     */
+    private $video;
+
+    /**
      * @ORM\ManyToOne(targetEntity="LIV\AppBundle\Entity\Address", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
@@ -585,6 +592,32 @@ class Event
 
         return $this;
     }
+
+    /**
+     * Get video
+     *
+     * @return string
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set video
+     *
+     * @param string $video
+     *
+     * @return Event
+     */
+    public function setVideo(string $video)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+
 
     /**
      * Remove tag
