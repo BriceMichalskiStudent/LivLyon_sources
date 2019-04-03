@@ -6,9 +6,11 @@ easy_admin:
       - { label: 'Gestion des Fiches Détaillées' }
       - { entity: 'Lieux', icon: 'map-pin' }
       - { entity: 'Evenement', icon: 'calendar' }
+      - { entity: 'Interview', icon: 'microphone'}
       - { label: 'Gestion des Photos ' }
       - { entity: 'Place_image', icon: 'image' }
       - { entity: 'Event_image', icon: 'image' }
+      - { entity: 'Interview_image', icon: 'image'}
       - { label: 'Gestion des Categories ' }
       - { entity: 'Lieux_categorie', icon: 'bars' }
       - { entity: 'Evenement_categorie', icon: 'bars' }
@@ -88,6 +90,27 @@ easy_admin:
       form:
         fields:
         - { property: 'name', label: 'Nom du Tags'}
+
+    Interview:
+      class: LIV\AppBundle\Entity\Interview
+      form:
+        fields:
+        - { property: 'artiste', label: 'Personne rencontré'}
+        - { property: 'info', label: 'Résumé'}
+        - { property: 'content', label: 'Interview'}
+
+    Interview_image:
+      class: LIV\AppBundle\Entity\InterviewImage
+      label: "Photos d'interview"
+      form:
+        fields:
+        - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
+        - { property: 'interview', type: 'entity'}
+      list:
+        fields:
+        - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.interview_images%' }
+        - { property: 'interview.artiste', label: 'Lieu lié' }
+
 
     Addresses:
       class: LIV\AppBundle\Entity\Address

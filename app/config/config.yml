@@ -9,6 +9,7 @@ parameters:
     locale: fr
     app.path.place_images: /img/place
     app.path.event_images: /img/event
+    app.path.interview_images: /img/interview
 
 framework:
     #esi: ~

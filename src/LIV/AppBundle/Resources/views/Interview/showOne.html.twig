@@ -12,13 +12,14 @@
                             {% for image in interview.images %}
                                     <img src="{{ asset('img/interview/' ~ image.image ) }}" alt="{{ interview.artiste }}" class="carousel-item" style="max-width: 100%; height: auto">
                             {% endfor %}
-                            <span class="card-title">Interview de {{ interview.artiste }}Liv' Lyon Fanzine</span>
+                            <span class="card-title">Découverte de {{ interview.artiste }}</span>
                         </div>
                         <div class="card-content">
                             <p>
                                 {{ interview.info }}
                             </p>
                         </div>
+                        {% if interview.content is not null %}
                         <div class="card-content">
                             <p>
                                 {{ interview.content }}
@@ -26,7 +27,7 @@
                             <p style="text-align: right"><strong>Interview by Liv' Lyon Fanzine</strong></p>
                             </p>
                         </div>
-
+                        {% endif %}
 
                     </div>
                 </div>
