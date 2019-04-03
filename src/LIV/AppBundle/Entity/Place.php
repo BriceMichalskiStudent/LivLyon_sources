@@ -147,6 +147,7 @@ class Place
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTime("now");
+        $this->slug = str_replace(' ', '-', $this->name);
     }
 
     /**

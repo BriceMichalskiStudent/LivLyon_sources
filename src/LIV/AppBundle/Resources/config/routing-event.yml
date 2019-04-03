@@ -2,3 +2,8 @@ show_single_event:
   path: /events/{slugCategory}/{slugEvent}
   defaults : { _controller: LIVAppBundle:Event:show }
   methods: [GET]
+
+show_events_by_category:
+  path:    /events/{slug}
+  defaults : { _controller: LIVAppBundle:Event:showCategory }
+  methods: [GET]

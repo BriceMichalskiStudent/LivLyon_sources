@@ -1,0 +1,7 @@
+liv_app_fanzine:
+  path:    /fanzine
+  defaults: { _controller: LIVAppBundle:Fanzine:showAll }
+
+show_single_interview:
+  path:   /fanzine/{interviewSlug}
+  defaults: { _controller: LIVAppBundle:Fanzine:showOne }

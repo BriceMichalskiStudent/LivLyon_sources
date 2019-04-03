@@ -19,4 +19,18 @@ class EventController extends Controller
             "catSlug" => $slugCategory
         ));
     }
+
+    public function showCategoryAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $category = $em->getRepository('LIVAppBundle:EventCategory')->findAllEventByCategorySlug($slug);
+
+        if (!$category) {
+            throw $this->createNotFoundException('The event does not exist');
+        }
+
+        return $this->render('@LIVApp/Categories/eventsCategory.html.twig', array(
+            "category" => $category
+        ));
+    }
 }
