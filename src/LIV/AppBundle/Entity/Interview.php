@@ -156,7 +156,7 @@ class Interview
     /**
      * @return string
      */
-    public function getInfo(): string
+    public function getInfo()
     {
         return $this->info;
     }
@@ -172,7 +172,7 @@ class Interview
     /**
      * @return string
      */
-    public function getLocalisation(): string
+    public function getLocalisation()
     {
         return $this->localisation;
     }
@@ -188,7 +188,7 @@ class Interview
     /**
      * @return string
      */
-    public function getSlug(): string
+    public function getSlug()
     {
         return $this->slug;
     }

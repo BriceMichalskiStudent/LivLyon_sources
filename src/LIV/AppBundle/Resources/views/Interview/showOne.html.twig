@@ -22,7 +22,7 @@
                         {% if interview.content is not null %}
                         <div class="card-content">
                             <p>
-                                {{ interview.content }}
+                                {{ interview.content | raw }}
                                 <br>
                             <p style="text-align: right"><strong>Interview by Liv' Lyon Fanzine</strong></p>
                             </p>
