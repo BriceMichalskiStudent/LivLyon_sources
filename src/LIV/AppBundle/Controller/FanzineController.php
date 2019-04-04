@@ -10,7 +10,6 @@ namespace LIV\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-
 class FanzineController extends Controller
 {
     public function showAllAction()

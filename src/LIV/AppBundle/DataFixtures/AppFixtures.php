@@ -114,32 +114,31 @@ class AppFixtures extends Fixture
 
     public function loadInterview(ObjectManager $manager)
     {
-        for($i = 0; $i < 5; $i++)
-        {
-             $interview = new Interview();
-             $interview->setArtiste('Cap_Phi'.$i);
-             $interview->setLocalisation('descente de la croix rousse');
-             $interview->setInfo("Cap Phi est un street artist et infographiste Lyonnais issu d’une culture prolétaire.");
-             $interview->setContent('Cap Phi est un street artist et infographiste Lyonnais issu d’une culture prolétaire. Il a
+        for ($i = 0; $i < 5; $i++) {
+            $interview = new Interview();
+            $interview->setArtiste('Cap_Phi'.$i);
+            $interview->setLocalisation('descente de la croix rousse');
+            $interview->setInfo("Cap Phi est un street artist et infographiste Lyonnais issu d’une culture prolétaire.");
+            $interview->setContent('Cap Phi est un street artist et infographiste Lyonnais issu d’une culture prolétaire. Il a
                                 découvert le street art dans les rues Lyonnaises, et le pratique lui-même depuis 2010. Sa
                                 vision de l’Art repose sur le concept d’« Art Modeste » d’Hervé Di Rosa, qui n’établit pas de
                                 hiérarchie entre les différentes formes d’Art et qui place l’émotion au centre de toute
                                 compréhension artistique. Son art est reconnaissable : il met en scène des petits monstres,
                                 dans un style très cartoon et coloré.');
 
-             $interviewImage1 = new InterviewImage();
-             $interviewImage1->setImage('demo-event1.jpg');
-             $interviewImage1->setInterview($interview);
-             $interviewImage1->setUpdatedAt(new \DateTime('now'));
+            $interviewImage1 = new InterviewImage();
+            $interviewImage1->setImage('demo-event1.jpg');
+            $interviewImage1->setInterview($interview);
+            $interviewImage1->setUpdatedAt(new \DateTime('now'));
 
-             $interviewImage2 = new InterviewImage();
-             $interviewImage2->setImage('demo-event2.jpg');
-             $interviewImage2->setInterview($interview);
-             $interviewImage2->setUpdatedAt(new \DateTime('now'));
+            $interviewImage2 = new InterviewImage();
+            $interviewImage2->setImage('demo-event2.jpg');
+            $interviewImage2->setInterview($interview);
+            $interviewImage2->setUpdatedAt(new \DateTime('now'));
 
-             $manager->persist($interview);
-             $manager->persist($interviewImage1);
-             $manager->persist($interviewImage2);
+            $manager->persist($interview);
+            $manager->persist($interviewImage1);
+            $manager->persist($interviewImage2);
         }
         $manager->flush();
     }

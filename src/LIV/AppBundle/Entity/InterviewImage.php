@@ -53,6 +53,15 @@ class InterviewImage
 
     // ...
 
+
+    // file manipulation
+    public function upload($imageFile, $name)
+    {
+        $name= uniqid('PLACE').str_replace(' ', '-', $name);
+        $this->imageFile->move('%app.path.place_images%', $name);
+        $this->image = $name;
+    }
+
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
@@ -66,13 +75,6 @@ class InterviewImage
         }
     }
 
-    // file manipulation
-    public function upload($imageFile, $name)
-    {
-        $name= uniqid('PLACE').str_replace(' ', '-', $name);
-        $this->imageFile->move('%app.path.place_images%', $name);
-        $this->image = $name;
-    }
 
     public function getImageFile()
     {
@@ -133,5 +135,4 @@ class InterviewImage
     {
         $this->interview = $interview;
     }
-
 }
