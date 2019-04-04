@@ -123,6 +123,13 @@ class Place
      */
     private $images;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="videoUrl", type="string", length=255, nullable=true)
+     */
+    private $video;
+
     // METHOD
     /**
      * @ORM\PrePersist
@@ -140,6 +147,7 @@ class Place
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTime("now");
+        $this->slug = str_replace(' ', '-', $this->name);
     }
 
     /**
@@ -148,6 +156,30 @@ class Place
     public function __construct()
     {
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     *  Get video
+     *
+     * @return string
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set video
+     *
+     * @param string $video
+     *
+     * @return Place
+     */
+    public function setVideo(string $video)
+    {
+        $this->video = $video;
+
+        return $this;
     }
 
     public function __toString()

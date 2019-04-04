@@ -9,6 +9,7 @@ parameters:
     locale: fr
     app.path.place_images: /img/place
     app.path.event_images: /img/event
+    app.path.interview_images: /img/interview
 
 framework:
     #esi: ~
@@ -39,6 +40,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+    - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 
 # Doctrine Configuration
 doctrine:

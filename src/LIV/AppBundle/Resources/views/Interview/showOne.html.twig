@@ -1,0 +1,40 @@
+{% extends '@LIVApp/Default/layout.html.twig' %}
+
+{% block title %}Interview de {{ interview.artiste }} by Liv' Lyon Fanzine{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row placesPresentation">
+            <div class="col s12 m12">
+                <div class="col s12 m12">
+                    <div class="card hoverable">
+                        <div class="card-image carousel carousel-slider center">
+                            {% for image in interview.images %}
+                                    <img src="{{ asset('img/interview/' ~ image.image ) }}" alt="{{ interview.artiste }}" class="carousel-item" style="max-width: 100%; height: auto">
+                            {% endfor %}
+                            <span class="card-title">Découverte de {{ interview.artiste }}</span>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                {{ interview.info }}
+                            </p>
+                        </div>
+                        {% if interview.content is not null %}
+                        <div class="card-content">
+                            <p>
+                                {{ interview.content | raw }}
+                                <br>
+                            <p style="text-align: right"><strong>Interview by Liv' Lyon Fanzine</strong></p>
+                            </p>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

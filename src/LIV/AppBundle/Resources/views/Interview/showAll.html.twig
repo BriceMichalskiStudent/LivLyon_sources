@@ -1,0 +1,39 @@
+{% extends '@LIVApp/Default/layout.html.twig' %}
+
+{% block title %} Interview by Liv' Lyon Fanzine {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row placesPresentation">
+            <div class="col s12 m12">
+                {% for interview in interviews %}
+                    <div class="col s12 m6">
+                        <div class="card hoverable">
+                            <div class="card-image">
+                                {% for image in interview.images %}
+                                    {% if loop.first %}
+                                        <img src="{{ asset('img/interview/' ~ image.image ) }}" alt="{{ interview.artiste }}">
+                                    {% endif %}
+                                {% endfor %}
+                                <span class="card-title">{{ interview.artiste }}</span>
+                            </div>
+                            <div class="card-content">
+                                <p>
+                                    {{ interview.info }}
+                                </p>
+                            </div>
+
+                            <div class="card-action">
+                                <a href="{{ path('show_single_interview',{'interviewSlug': interview.slug }) }}" style="color: #ec311d">Lire l'article</a>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}
