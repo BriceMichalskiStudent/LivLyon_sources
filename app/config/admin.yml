@@ -96,8 +96,10 @@ easy_admin:
       form:
         fields:
         - { property: 'artiste', label: 'Personne rencontré'}
+        - { property: 'localisation', label: 'localisation'}
         - { property: 'info', label: 'Résumé'}
         - { property: 'content', type: 'fos_ckeditor', label: 'Interview'}
+
 
     Interview_image:
       class: LIV\AppBundle\Entity\InterviewImage

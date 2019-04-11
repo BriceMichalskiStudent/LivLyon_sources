@@ -200,4 +200,9 @@ class Interview
     {
         $this->slug = $slug;
     }
+
+    public function __toString()
+    {
+        return $this->getArtiste();
+    }
 }
