@@ -1,0 +1,71 @@
+version: '3.5'
+
+services:
+
+  # Base de données de dev de livlyon
+  mysql:
+    image: mysql:5.6
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DATABASE_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DATABASE_NAME}"
+      MYSQL_USER: "${DATABASE_USER}"
+      MYSQL_PASSWORD: "${DATABASE_PASSWORD}"
+      TZ: ${TZ:-"Europe/Paris"}
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - "${MYSQL_PORT:-3307}:3306"
+
+  # Serveur web
+  http:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-80}:80"
+    volumes:
+      - ./web:/var/www/html/web
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      default:
+        aliases:
+          - livlyon.test
+          - livlyon.dev
+          - livlyon.prod
+          - livlyon.loc
+
+  # PHP FPM
+  php:
+    build:
+      context: ./docker/php
+    restart: unless-stopped
+    volumes:
+      - .:/var/www/html
+      - ./docker/php/log.conf:/usr/local/etc/php-fpm.d/zz-log.conf:ro
+      - ./docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
+      - ~/.ssh:/var/www/.ssh:ro
+      - xdebug:/xdebug
+    env_file: .env
+    environment:
+      DATABASE_HOST: "mysql"
+      DATABASE_PORT: "3306"
+      HTTP_HOST: "${HTTP_HOST:-livlyon.loc}:${HTTP_PORT:-80}"
+      APP_ENV: "${APP_ENV:-dev}"
+      PHP_IDE_CONFIG: "serverName=${HTTP_HOST}"
+      MAILER_TRANSPORT: smtp
+      MAILER_HOST: mailhog
+      MAILER_PORT: 1025
+      MAILER_ENCRYPTION: ~
+      MAILER_USER: ~
+      MAILER_PASSWORD: ~
+
+  # smtp mailer
+  mailhog:
+    image: mailhog/mailhog
+    restart: unless-stopped
+    ports:
+      - "${DOCKER_PORT_MAILHOG:-8025}:8025"
+
+volumes:
+  mysql:
+  xdebug:
