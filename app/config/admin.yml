@@ -3,25 +3,27 @@ easy_admin:
   design:
     color_scheme: 'light'
     menu:
-      - { label: 'Gestion des Fiches Détaillées' }
-      - { entity: 'Lieux', icon: 'map-pin' }
-      - { entity: 'Evenement', icon: 'calendar' }
-      - { label: 'Gestion des Photos ' }
-      - { entity: 'Place_image', icon: 'image' }
-      - { entity: 'Event_image', icon: 'image' }
-      - { label: 'Gestion des Categories ' }
-      - { entity: 'Lieux_categorie', icon: 'bars' }
-      - { entity: 'Evenement_categorie', icon: 'bars' }
-      - { label: 'Autres' }
-      - { entity: 'Tags', icon: 'tags' }
+    - { label: 'Gestion des Fiches Détaillées' }
+    - { entity: 'Lieux', icon: 'map-pin' }
+    - { entity: 'Evenement', icon: 'calendar' }
+    - { entity: 'Interview', icon: 'microphone'}
+    - { label: 'Gestion des Photos ' }
+    - { entity: 'Place_image', icon: 'image' }
+    - { entity: 'Event_image', icon: 'image' }
+    - { entity: 'Interview_image', icon: 'image'}
+    - { label: 'Gestion des Categories ' }
+    - { entity: 'Lieux_categorie', icon: 'bars' }
+    - { entity: 'Evenement_categorie', icon: 'bars' }
+    - { label: 'Autres' }
+    - { entity: 'Tags', icon: 'tags' }
     form_theme:
-      - '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig'
+    - '@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig'
     assets:
       favicon: '/favicon.png'
       css:
-          - 'bundles/easyadmin/bootstrap-all.css'
+      - 'bundles/easyadmin/bootstrap-all.css'
       js:
-          - 'bundles/easyadmin/bootstrap-all.js'
+      - 'bundles/easyadmin/bootstrap.min.js'
 
   formats:
     date:     'd/m/Y'
@@ -69,25 +71,48 @@ easy_admin:
       label: 'Photos de Lieux'
       form:
         fields:
-          - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
-          - { property: 'place', type: 'entity'}
+        - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
+        - { property: 'place', type: 'entity'}
       list:
         fields:
-          - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.place_images%' }
-          - { property: 'place.name', label: 'Lieu lié' }
+        - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.place_images%' }
+        - { property: 'place.name', label: 'Lieu lié' }
 
     Lieux_categorie:
       class: LIV\AppBundle\Entity\PlaceCategory
       label: 'Categories de Lieux'
       form:
         fields:
-          - { property: 'name'}
+        - { property: 'name'}
 
     Tags:
       class: LIV\AppBundle\Entity\Tag
       form:
         fields:
         - { property: 'name', label: 'Nom du Tags'}
+
+    Interview:
+      class: LIV\AppBundle\Entity\Interview
+      form:
+        fields:
+        - { property: 'artiste', label: 'Personne rencontré'}
+        - { property: 'localisation', label: 'localisation'}
+        - { property: 'info', label: 'Résumé'}
+        - { property: 'content', type: 'fos_ckeditor', label: 'Interview'}
+
+
+    Interview_image:
+      class: LIV\AppBundle\Entity\InterviewImage
+      label: "Photos d'interview"
+      form:
+        fields:
+        - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
+        - { property: 'interview', type: 'entity'}
+      list:
+        fields:
+        - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.interview_images%' }
+        - { property: 'interview.artiste', label: 'Lieu lié' }
+
 
     Addresses:
       class: LIV\AppBundle\Entity\Address
@@ -144,16 +169,16 @@ easy_admin:
       label: "Photos d'evenement"
       form:
         fields:
-          - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
-          - { property: 'event', type: 'entity'}
+        - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType' }
+        - { property: 'event', type: 'entity'}
       list:
         fields:
-          - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.event_images%' }
-          - { property: 'event.name', label: 'Evenement lié' }
+        - { property: 'image', type: 'image',template: 'vich_uploader_image.html.twig', base_path: '%app.path.event_images%' }
+        - { property: 'event.name', label: 'Evenement lié' }
 
     Evenement_categorie:
       class: LIV\AppBundle\Entity\EventCategory
       label: "Categories d'evenement"
       form:
         fields:
-          - { property: 'name'}
+        - { property: 'name'}

@@ -33,17 +33,14 @@ class ControllerTest extends WebTestCase
         $this->assertEquals("200", $response->getStatusCode());
     }
 
-    public function testShowPlacesCategoryContent()
+    public function testPlace()
     {
-        $client = static::createClient();
-        $client->request('GET', '/places/common');
-        $response = $client->getResponse();
+        $clientList = static::createClient();
+        $clientList->request('GET', '/places/common');
+        $response = $clientList->getResponse();
 
         $this->assertEquals("200", $response->getStatusCode());
-    }
 
-    public function testShowSinglePlace()
-    {
         $client = static::createClient();
         $client->request('GET', '/places/common/place-0');
 
@@ -51,16 +48,13 @@ class ControllerTest extends WebTestCase
         $this->assertContains("place-0", $client->getResponse()->getContent());
     }
 
-    public function testShowEventsCategoryContent()
+    public function testEvent()
     {
-        $client = static::createClient();
-        $client->request('GET', '/events/common');
+        $clientList = static::createClient();
+        $clientList->request('GET', '/events/common');
 
-        $this->assertEquals("200", $client->getResponse()->getStatusCode());
-    }
+        $this->assertEquals("200", $clientList->getResponse()->getStatusCode());
 
-    public function testShowSingleEvent()
-    {
         $client = static::createClient();
         $client->request('GET', '/events/common/event-0');
         $response = $client->getResponse();
@@ -107,5 +101,22 @@ class ControllerTest extends WebTestCase
 
         $this->assertEquals("200", $response->getStatusCode());
         $this->assertContains("Autour", $response->getContent());
+    }
+
+    public function testInterviewList()
+    {
+        $clientList = static::createClient();
+        $clientList->request('GET', '/fanzine');
+        $responseList = $clientList->getResponse();
+
+        $this->assertEquals("200", $responseList->getStatusCode());
+        $this->assertContains("Cap_Phi3", $responseList->getContent());
+
+        $client = static::createClient();
+        $client->request('GET', '/fanzine');
+        $response = $client->getResponse();
+
+        $this->assertEquals("200", $response->getStatusCode());
+        $this->assertContains("Cap_Phi3", $response->getContent());
     }
 }

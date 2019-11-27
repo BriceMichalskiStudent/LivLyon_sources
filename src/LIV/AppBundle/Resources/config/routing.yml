@@ -20,11 +20,8 @@ liv_place:
 liv_event:
     resource: "@LIVAppBundle/Resources/config/routing-event.yml"
 
-liv_place_category:
-    resource: "@LIVAppBundle/Resources/config/routing-place-category.yml"
-
-liv_event_category:
-    resource: "@LIVAppBundle/Resources/config/routing-event-category.yml"
+liv_fanzine:
+    resource: "@LIVAppBundle/Resources/config/routing-fanzine.yml"
 
 liv_tag:
     resource: "@LIVAppBundle/Resources/config/routing-tag.yml"

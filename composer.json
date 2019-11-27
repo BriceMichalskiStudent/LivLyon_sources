@@ -2,7 +2,7 @@
     "name": "symfony/framework-standard-edition",
     "license": "Apache2",
     "type": "project",
-    "version": "1.0.1" ,
+    "version": "1.1.0" ,
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-4": {
@@ -15,10 +15,11 @@
         "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.2",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "easycorp/easyadmin-bundle": "^1.17",
+        "friendsofsymfony/ckeditor-bundle": "^2.0",
         "friendsofsymfony/user-bundle": "^2.1",
         "incenteev/composer-parameter-handler": "^2.0",
         "sensio/distribution-bundle": "^5.0.19",
